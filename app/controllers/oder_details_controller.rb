@@ -1,0 +1,2 @@
+class OderDetailsController < ApplicationController
+end
