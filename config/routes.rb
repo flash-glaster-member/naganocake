@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  devise_for :customers
-  devise_for :admins
-
   root :to =>"homes#top"
 
  # 顧客用
