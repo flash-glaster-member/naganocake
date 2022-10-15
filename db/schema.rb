@@ -15,10 +15,6 @@ ActiveRecord::Schema.define(version: 2022_10_15_063502) do
   create_table "addresses", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id"
-    t.string "send_name"
-    t.text "send_address"
-    t.integer "post_code"
   end
 
   create_table "admins", force: :cascade do |t|
@@ -56,41 +52,22 @@ ActiveRecord::Schema.define(version: 2022_10_15_063502) do
   create_table "genres", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "genre_name"
   end
 
   create_table "oder_details", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "product_id"
-    t.integer "oder_id"
-    t.integer "product_price"
-    t.integer "volume"
-    t.integer "production_status"
   end
 
   create_table "oders", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id"
-    t.integer "post_code"
-    t.text "send_address"
-    t.string "send_name"
-    t.integer "total_price"
-    t.integer "pay_way"
-    t.integer "oder_status"
     t.integer "postage"
   end
 
   create_table "products", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "genre_id"
-    t.string "product_name"
-    t.string "product_image"
-    t.text "product_description"
-    t.integer "product_price"
-    t.integer "sales_status"
   end
 
 end
