@@ -14,4 +14,22 @@ Rails.application.routes.draw do
    sessions: "admin/sessions"
  }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  scope module: :public do
+    resources :products, only: [:index, :show]
+    resources :customers, only: [:show, :edit, :update, :quite, :out]
+    resources :carts, only: [:index, :update, :destroy, :all_destroy, :create]
+    resources :orders, only: [:new, :log, :thanx, :create, :index, :show]
+    resources :addresses, only: [:index, :edit, :create, :update, :destroy]
+  end
+
+  namespace :admin do
+    root :to => "homes#top"
+    resources :products, only: [:index, :new, :create, :show, :edit, :update]
+    resources :genres, only: [:index, :create, :edit, :update]
+    resources :customers, only: [:index, :show, :edit, :update]
+    resources :order_details, only: [:index, :update,]
+  end
+
+
 end
