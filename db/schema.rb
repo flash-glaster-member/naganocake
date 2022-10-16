@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_15_082918) do
+ActiveRecord::Schema.define(version: 2022_10_16_051517) do
 
   create_table "addresses", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id"
+    t.integer "customer_id"
     t.string "send_name"
     t.text "send_address"
     t.integer "post_code"
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2022_10_15_082918) do
 
   create_table "carts", force: :cascade do |t|
     t.integer "product_id"
-    t.integer "user_id"
+    t.integer "customer_id"
     t.integer "volume"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -72,7 +72,7 @@ ActiveRecord::Schema.define(version: 2022_10_15_082918) do
   create_table "orders", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id"
+    t.integer "customer_id"
     t.integer "post_code"
     t.text "send_address"
     t.string "send_name"
@@ -90,7 +90,7 @@ ActiveRecord::Schema.define(version: 2022_10_15_082918) do
     t.string "product_image"
     t.text "product_description"
     t.integer "product_price"
-    t.integer "sales_status"
+    t.boolean "sales_status"
   end
 
 end
