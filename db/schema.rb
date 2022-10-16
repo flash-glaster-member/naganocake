@@ -56,20 +56,15 @@ ActiveRecord::Schema.define(version: 2022_10_16_060455) do
   create_table "genres", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "genre_name"
+  end
+
+  create_table "oders", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "postage"
   end
 
   create_table "order_details", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "product_id"
-    t.integer "oder_id"
-    t.integer "product_price"
-    t.integer "volume"
-    t.integer "production_status"
-  end
-
-  create_table "orders", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "customer_id"
@@ -90,6 +85,7 @@ ActiveRecord::Schema.define(version: 2022_10_16_060455) do
     t.text "product_description"
     t.integer "product_price"
     t.boolean "is_active"
+
   end
 
 end
