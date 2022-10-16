@@ -15,4 +15,7 @@ class OdersController < ApplicationController
   def show
   end
 
+  def thanx
+  end
+
 end
