@@ -1,4 +1,4 @@
-class CartsController < ApplicationController
+class Public::CartProductsController < ApplicationController
 
   def index
   end
@@ -14,7 +14,7 @@ class CartsController < ApplicationController
 
   def create
   end
-  
+
   private
 
 end
