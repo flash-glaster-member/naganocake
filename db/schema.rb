@@ -85,7 +85,6 @@ ActiveRecord::Schema.define(version: 2022_10_16_060455) do
     t.text "product_description"
     t.integer "product_price"
     t.boolean "is_active"
-
   end
 
 end
