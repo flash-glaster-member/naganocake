@@ -18,11 +18,11 @@ Rails.application.routes.draw do
   scope module: :public do
     resources :products, only: [:index, :show]
     resources :customers, only: [:show, :edit, :update, :quite, :out]
-    resources :carts, only: [:index, :update, :destroy, :all_destroy, :create]
+    resources :cart_products, only: [:index, :update, :destroy, :all_destroy, :create]
     resources :orders, only: [:new, :log, :thanx, :create, :index, :show]
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
 
-    get 'orders/thanx', to: 'orders#thanx'
+    get 'orders/thanx'
 
   end
 
