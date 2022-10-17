@@ -1,0 +1,12 @@
+<!--注文情報入力画面-->
+
+
+<%= form_with(model: @order, local: true) do |form| %>
+  <%= form.radio_button :pay_way, :cledit_card, checked: true %>
+  <%= form.label :pay_way, "クレジットカード" %>
+  <%= form.radio_button :pay_way, :transfer %>
+  <%= form.label :pay_way, "銀行振込" %>
+<% end %>
+
+
+<%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %>
