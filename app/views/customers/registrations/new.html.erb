@@ -2,28 +2,57 @@
       <%= form_with model: @customer, url: customer_registration_path, id: 'new_customer', class: 'new_customerr', local: true do |f| %>
         <%= render "customers/shared/error_messages", resource: resource %>
         <div class="field">
-          <%= f.label :name %><br />
-          <%= f.text_field :name, autofocus: true, class: "name" %>
+          <%= f.label :lastname %><li>名前</li><br />
+          <%= f.text_field :lastname, autofocus: true, class: "lastname" %>
         </div>
+        
+                <div class="field">
+          <%= f.label :firstname %><li>名前</li><br />
+          <%= f.text_field :firstname, autofocus: true, class: "firstname" %>
+        </div>
+        
+                <div class="field">
+          <%= f.label :kana_lastname %><li>名前</li><br />
+          <%= f.text_field :kana_lastname, autofocus: true, class: "kana_lastname" %>
+        </div>
+
+                <div class="field">
+          <%= f.label :kana_firsttname %><li>名前</li><br />
+          <%= f.text_field :kana_firstname, autofocus: true, class: "kana_firstname" %>
+        </div>
+        
         <div class="field">
-          <%= f.label :email %><br />
+          <%= f.label :email %><li>メールアドレス</li><br />
           <%= f.email_field :email, autofocus: true, class: "email" %>
         </div>
         
+                <div class="field">
+          <%= f.label :postcode %><li>郵便番号(ハイフンなし)</li><br />
+          <%= f.text_field :postcode, autofocus: true, class: "postcode" %>
+        </div>
+        
+                <div class="field">
+          <%= f.label :address %><li>住所</li><br />
+          <%= f.text_field :address, autofocus: true, class: "address" %>
+        </div>
+
+        
+        
+        
         
         <div class="field">
-          <%= f.label :password %>
+          <%= f.label :password %><li>パスワード(6文字以上)</li>
           <% if @minimum_password_length %>
           <em>(<%= @minimum_password_length %> characters minimum)</em>
           <% end %><br />
           <%= f.password_field :password, autocomplete: "off", class: "password" %>
         </div>
         <div class="field">
-          <%= f.label :password_confirmation %><br />
+          <%= f.label :password_confirmation %><li>パスワード(確認用)</li><br />
           <%= f.password_field :password_confirmation, autocomplete: "off", class: "password_confirm" %>
         </div>
         <div class="actions">
-          <%= f.submit "Sign up" ,class: 'btn btn-sm btn-success' %>
+          <%= f.submit "新規登録" ,class: 'btn btn-sm btn-success' %>
         </div>
       <% end %>
       <%= render "customers/shared/links" %>
