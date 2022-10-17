@@ -15,11 +15,17 @@
           <!--登録済住所-->
       <%= form.radio_button [:post_code,:send_address,:send_name], '1', checked: true %>
       <%= form.label [:post_code,:send_address,:send_name], "登録済住所から選択" %><br />
-      <%= render 'public/addresses/select'%>
+      <%= form.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %><br />
 
       <%= form.radio_button [:post_code,:send_address,:send_name], '2' %>
       <%= form.label [:post_code,:send_address,:send_name], "新しいお届け先" %>
-      <%= render 'public/addresses/form', order: @order%>
+      <%= form.label :post_code, '郵便番号（ハイフン無し）' %>
+      <%= form.text_field :post_code %><br />
+      <%= form.label :send_address, '住所' %>
+      <%= form.text_field :send_address %><br />
+      <%= form.label :send_name, '宛名' %>
+      <%= form.text_field :send_name %><br />
+      <%= form.submit "確認画面へ進む", class: 'btn btn-info' %>
 
     <% end %>
 
