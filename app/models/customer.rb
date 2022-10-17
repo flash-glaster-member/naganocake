@@ -14,7 +14,7 @@ class Customer < ApplicationRecord
          validates :password, presence: true
          
 
-         has_many :carts
+         has_many :cart_products
          has_many :orders
          has_many :addresses
 

@@ -1,4 +1,4 @@
-class OdersController < ApplicationController
+class Public::OrdersController < ApplicationController
 
   def new
   end
@@ -13,6 +13,9 @@ class OdersController < ApplicationController
   end
 
   def show
+  end
+
+  def thanx
   end
 
 end
