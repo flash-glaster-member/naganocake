@@ -1,6 +1,6 @@
 class Public::OrdersController < ApplicationController
-
   def new
+    @order = Order.new
   end
 
   def log
@@ -17,5 +17,4 @@ class Public::OrdersController < ApplicationController
 
   def thanx
   end
-
 end
