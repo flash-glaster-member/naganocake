@@ -10,48 +10,43 @@
         <% if admin_signed_in? %>
           <li>
             <%= link_to admin_products_path,class: 'nav-link text-light' do %>
-              <button>商品一覧</button>
+              <i>マイページ</i>
             <% end %>
           </li>
           <li>
             <%=  link_to admin_customerss_path,class: 'nav-link text-light' do %>
-              <button>会員一覧</button>
+              <i>商品一覧</i>
             <% end %>
           </li>
           <li>
             <%=  link_to admin_order_details_path ,class: 'nav-link text-light' do %>
-              <button>注文履歴一覧</button>
-            <% end %>
-          </li>
-           <li>
-            <%=  link_to admin_genres_path ,class: 'nav-link text-light' do %>
-              <button>ジャンル一覧</button>
+              <i>カート一覧</i>
             <% end %>
           </li>
           <li>
-            <%= link_to destroy_admin_session_path, method: :delete,class: 'nav-link text-light' do %>
-              <button>ログアウト</button>
+            <%= link_to destroy_session_path, method: :delete,class: 'nav-link text-light' do %>
+              <i>ログアウト</i>
             <% end %>
           </li>
         <% else %>
           <li>
-            <%= link_to homes_about_path,class: 'nav-link text-light' do %>
-              <button>About</button>
+            <%= link_to about_path,class: 'nav-link text-light' do %>
+              <i>About</i>
             <% end %>
           </li>
           <li>
             <%= link_to admin_products_path,class: 'nav-link text-light' do %>
-              <button>商品一覧</button>
+              <i>商品一覧</i>
             <% end %>
           </li>
           <li>
-            <%= link_to new_customer_registration_path,class: 'nav-link text-light' do %>
-              <button>新規登録</button>
+            <%= link_to new_user_registration_path,class: 'nav-link text-light' do %>
+              <i>新規登録</i>
             <% end %>
           </li>
           <li>
-            <%= link_to new_customer_session_path ,class: 'nav-link text-light' do %>
-              <button>ログイン</button>
+            <%= link_to new_user_session_path ,class: 'nav-link text-light' do %>
+              <i>ログイン</i>
             <% end %>
           </li>
         <% end %>
@@ -60,7 +55,3 @@
     </div>
   </nav>
 </header>
-        </ul>
-      </div>
-    </div>
-  </nav>
