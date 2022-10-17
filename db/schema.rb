@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_14_182407) do
+
+ActiveRecord::Schema.define(version: 2022_10_16_171419) do
 
   create_table "addresses", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -29,7 +30,7 @@ ActiveRecord::Schema.define(version: 2022_10_14_182407) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
-  create_table "carts", force: :cascade do |t|
+  create_table "cart_products", force: :cascade do |t|
     t.integer "product_id"
     t.integer "user_id"
     t.integer "volume"
@@ -40,11 +41,46 @@ ActiveRecord::Schema.define(version: 2022_10_14_182407) do
   create_table "genres", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+<<<<<<< HEAD
+=======
+    t.string "name"
+  end
+
+  create_table "order_details", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "product_id"
+    t.integer "oder_id"
+    t.integer "product_price"
+    t.integer "volume"
+    t.integer "production_status"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "customer_id"
+    t.integer "post_code"
+    t.text "send_address"
+    t.string "send_name"
+    t.integer "total_price"
+    t.integer "pay_way"
+    t.integer "oder_status"
+    t.integer "postage"
+>>>>>>> origin/develop
   end
 
   create_table "products", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+<<<<<<< HEAD
+=======
+    t.integer "genre_id"
+    t.string "name"
+    t.text "description"
+    t.integer "price"
+    t.boolean "is_active"
+>>>>>>> origin/develop
   end
 
 end
