@@ -59,17 +59,13 @@ ActiveRecord::Schema.define(version: 2022_10_16_171419) do
     t.string "name"
   end
 
-  create_table "order_details", force: :cascade do |t|
+  create_table "oders", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "product_id"
-    t.integer "oder_id"
-    t.integer "product_price"
-    t.integer "volume"
-    t.integer "production_status"
+    t.integer "postage"
   end
 
-  create_table "orders", force: :cascade do |t|
+  create_table "order_details", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "customer_id"
