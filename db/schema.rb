@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 2022_10_16_171419) do
+ActiveRecord::Schema.define(version: 2022_10_17_034940) do
 
   create_table "addresses", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -41,8 +40,6 @@ ActiveRecord::Schema.define(version: 2022_10_16_171419) do
   create_table "genres", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-<<<<<<< HEAD
-=======
     t.string "name"
   end
 
@@ -63,20 +60,16 @@ ActiveRecord::Schema.define(version: 2022_10_16_171419) do
     t.integer "pay_way"
     t.integer "oder_status"
     t.integer "postage"
->>>>>>> origin/develop
   end
 
   create_table "products", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-<<<<<<< HEAD
-=======
     t.integer "genre_id"
     t.string "name"
     t.text "description"
     t.integer "price"
     t.boolean "is_active"
->>>>>>> origin/develop
   end
 
 end
