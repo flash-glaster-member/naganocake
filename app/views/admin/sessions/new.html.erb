@@ -4,7 +4,7 @@
       <h2 class="bg-gray-300">管理者ログイン</h2>
       <%= form_with model: @admin, url: session_path(resource_name), local: true do |f| %>
           <div class="field">
-          <%= f.label :email,placeholder: "sample@example.com" %><li>メールアドレス</li><br />
+          <%= f.label :email,placeholder: "sample@example.com" %><li>メルアドレス</li><br />
           <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
            </div>
         <div class="field">
