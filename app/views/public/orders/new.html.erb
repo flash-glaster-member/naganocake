@@ -1,12 +1,26 @@
 <!--注文情報入力画面-->
+<div class='container px-5 px-sm-0'>
+    <h2>注文情報入力</h2>
+    <h3>支払い方法</h3>
+    <%= form_with(model: @order, local: true) do |form| %>
+      <%= form.radio_button :pay_way, :cledit_card, checked: true %>
+      <%= form.label :pay_way, "クレジットカード" %><br />
+      <%= form.radio_button :pay_way, :transfer %>
+      <%= form.label :pay_way, "銀行振込" %>
+    <% end %>
+    <h3>お届け先</h3>
 
+    <%= form_with(model: @order, local: true) do |form| %>
 
-<%= form_with(model: @order, local: true) do |form| %>
-  <%= form.radio_button :pay_way, :cledit_card, checked: true %>
-  <%= form.label :pay_way, "クレジットカード" %>
-  <%= form.radio_button :pay_way, :transfer %>
-  <%= form.label :pay_way, "銀行振込" %>
-<% end %>
+          <!--登録済住所-->
+      <%= form.radio_button [:post_code,:send_address,:send_name], '1', checked: true %>
+      <%= form.label [:post_code,:send_address,:send_name], "登録済住所から選択" %><br />
+      <%= render 'public/addresses/select'%>
 
+      <%= form.radio_button [:post_code,:send_address,:send_name], '2' %>
+      <%= form.label [:post_code,:send_address,:send_name], "新しいお届け先" %>
+      <%= render 'public/addresses/form', order: @order%>
 
-<%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %>
+    <% end %>
+
+</div>
