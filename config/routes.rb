@@ -22,6 +22,10 @@ Rails.application.routes.draw do
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
 
     get 'orders/thanx'
+    # 退会確認画面
+    get "/customers/quite" => 'customers#quite', as: 'quite'
+    # 論理削除用のルーティング
+    patch "/customers/out" => 'customers#out', as: 'out'
 
   end
 
@@ -33,9 +37,5 @@ Rails.application.routes.draw do
     resources :order_details, only: [:index, :update,]
   end
 
-　# 退会確認画面
-  get '/customers/:id/quite'
-  # 論理削除用のルーティング
-  patch '/customers/:id/out'
 
 end
