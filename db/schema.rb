@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_18_091541) do
+ActiveRecord::Schema.define(version: 2022_10_18_101733) do
 
   create_table "addresses", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -75,8 +75,8 @@ ActiveRecord::Schema.define(version: 2022_10_18_091541) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "customer_id"
     t.integer "post_code"
-    t.text "send_address"
-    t.string "send_name"
+    t.text "address"
+    t.string "name"
     t.integer "total_price"
     t.integer "pay_way"
     t.integer "status"
