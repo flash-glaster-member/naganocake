@@ -3,14 +3,13 @@
 
  <h2>マイページ</h2>
 
-
- <table>
-
   <h3>登録情報</h3>
    <div class="form-group">
     <%= form_with model: @customer do |f| %>
      <%= f.submit "編集する", class:"btn btn-secondary" %>
    </div>
+
+   <table>
    <tr>
     <td>氏名</td>
     <td><%= @customer.lastname %><%= @customer.frstname %></td>
