@@ -4,8 +4,8 @@ Rails.application.routes.draw do
 
  # 顧客用
  devise_for :customers, skip: [:passwords], controllers: {
-   registrations: "pubilc/registrations",
-   sessions: 'pubilc/sessions'
+   registrations: "public/registrations",
+   sessions: 'public/sessions'
  }
 
  # 管理者用
