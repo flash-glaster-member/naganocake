@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root :to =>"homes#top"
-   get 'homes/about'
+   get 'homes/about', as: "about"
 
  # 顧客用
  devise_for :customers, skip: [:passwords], controllers: {

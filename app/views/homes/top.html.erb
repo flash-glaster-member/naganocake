@@ -8,24 +8,16 @@
     <div class='col-md-8 offset-md-1'>
       <!--画像の上に文字表示-->
       <div class="card" style="max-width: 400px;">
-  <img class="card-img" src="lake.jpg" alt="">
+  <img class="card-img" <%= image_tag "lake.jpg", size: "500x300" %> alt="">
   <div class="card-img-overlay">
-    ようこそ、ながのCAKEへ！
-    このサイトは、ケーキ販売のECサイトになります。<br>
-    会員でない方も商品の閲覧はできますが、<br>
-    購入には会員登録が必要になります。</p>
-　　　</div>
+    <p class="text-black">ようこそ、ながのCAKEへ！</p>
+    <p class="text-black">このサイトは、ケーキ販売のECサイトになります。</p>
+    <p class="text-black">会員でない方も商品の閲覧はできますが、</p>
+    <p class="text-black">購入には会員登録が必要になります。</p>
+
       <!--新着商品一覧表示-->
-<<<<<<< HEAD
-<<<<<<< HEAD
-      <%= render 'product', products: @products%>
-=======
       <%# <%= render 'index', books: @books%>
 
->>>>>>> origin/develop
-=======
-      <%= render 'product', products: @products%>
->>>>>>> origin/develop
     </div>
   </div>
 </div>
