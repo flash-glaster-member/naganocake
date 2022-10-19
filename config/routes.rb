@@ -21,6 +21,8 @@ Rails.application.routes.draw do
     # 論理削除用のルーティング
     patch "/customers/out" => 'customers#out', as: 'out'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  　patch "/customers/update" => 'customers#update'
   　patch "/admin/customers" => 'admin#customers'
 
   scope module: :public do
@@ -30,7 +32,6 @@ Rails.application.routes.draw do
     resources :orders, only: [:new, :log, :thanx, :create, :index, :show]
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
 
-    get 'orders/thanx'
 
   end
 
