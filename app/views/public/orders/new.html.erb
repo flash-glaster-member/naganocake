@@ -13,12 +13,14 @@
     <%= form_with(model: @order, local: true) do |form| %>
 
           <!--登録済住所-->
-      <%= form.radio_button [:post_code,:send_address,:send_name], '1', checked: true %>
-      <%= form.label [:post_code,:send_address,:send_name], "登録済住所から選択" %><br />
+      <%= form.radio_button [:post_code,:address,:name], '0', checked: true %>
+      <%= form.label [:post_code,:address,:name], "ご自身の住所" %><br />
+      <%= form.radio_button [:post_code,:address,:name], '1', checked: true %>
+      <%= form.label [:post_code,:address,:name], "登録済住所から選択" %><br />
       <%= form.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %><br />
 
-      <%= form.radio_button [:post_code,:send_address,:send_name], '2' %>
-      <%= form.label [:post_code,:send_address,:send_name], "新しいお届け先" %>
+      <%= form.radio_button [:post_code,:address,:name], '2' %>
+      <%= form.label [:post_code,:address,:name], "新しいお届け先" %>
       <%= form.label :post_code, '郵便番号（ハイフン無し）' %>
       <%= form.text_field :post_code %><br />
       <%= form.label :send_address, '住所' %>
