@@ -23,14 +23,12 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   scope module: :public do
+    get 'orders/thanx'
     resources :products, only: [:index, :show]
     resources :customers, only: [:show, :edit, :update, :quite, :out]
     resources :cart_products, only: [:index, :update, :destroy, :all_destroy, :create]
     resources :orders, only: [:new, :log, :thanx, :create, :index, :show]
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
-
-    get 'orders/thanx'
-
   end
 
   namespace :admin do
