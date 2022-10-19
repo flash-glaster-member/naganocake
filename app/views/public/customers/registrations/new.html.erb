@@ -31,13 +31,14 @@
 
                 <div class="field">
           <%= f.label :postcode %><li>郵便番号(ハイフンなし)</li><br />
-          <%= f.text_field :postcode,placeholder: "０００００００", autofocus: true, class: "postcode" %>
+          <%= f.text_field :postcode,placeholder: "００００００００", autofocus: true, class: "postcode" %>
         </div>
 
                 <div class="field">
           <%= f.label :address %><li>住所</li><br />
           <%= f.text_field :address,placeholder: "東京都渋谷区代々木神園町０−０", autofocus: true, class: "address" %>
         </div>
+
 
         <div class="field">
           <%= f.label :password %><li>パスワード(6文字以上)</li>

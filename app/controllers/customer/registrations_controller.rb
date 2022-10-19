@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Customers::RegistrationsController < Devise::RegistrationsController
+class Customer::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
@@ -10,24 +10,24 @@ class Customers::RegistrationsController < Devise::RegistrationsController
   end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super
+  end
 
   # GET /resource/edit
-  # def edit
-  #   super
-  # end
+   def edit
+     super
+   end
 
   # PUT /resource
-  # def update
-  #   super
-  # end
+  def update
+    super
+  end
 
   # DELETE /resource
-  # def destroy
-  #   super
-  # end
+  def destroy
+   super
+  end
 
   # GET /resource/cancel
   # Forces the session data which is usually expired after sign
@@ -42,7 +42,7 @@ class Customers::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
    def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:firstname, :lastname, :kana_firstname, :kana_lastname, :postcode, :address, :email, :password])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:firstname, :lastname, :kana_first_name, :kana_last_name, :postcode, :address, :email, :password])
    end
 
   # If you have extra params to permit, append them to the sanitizer.
