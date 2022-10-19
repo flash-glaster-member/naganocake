@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     # 論理削除用のルーティング
     patch "/customers/out" => 'customers#out', as: 'out'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  　patch "/admin/customers" => 'admin#customers'
 
   scope module: :public do
     resources :products, only: [:index, :show]
