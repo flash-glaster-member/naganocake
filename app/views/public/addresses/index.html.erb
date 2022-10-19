@@ -22,11 +22,11 @@
         <%= form_with model: @address do |f| %>
         <tr>
           <td>郵便番号(ハイフンなし)</td>
-          <td><%= f.text_field :postcode, class:'form-control postcode' %></td>
+          <td><%= f.text_field :post_code, class:'form-control postcode' %></td>
         </tr>
         <tr>
           <td>住所</td>
-          <td><%= f.text_field :addresses, class:'form-control addresses' %></td>
+          <td><%= f.text_field :address, class:'form-control addresses' %></td>
         </tr>
         <tr>
           <td>電話番号</td>
@@ -48,8 +48,8 @@
         <%= form_with model: @customer do |f| %>
          <tr>
            <td><%= customer.post_code %></td>
-           <td><%= customer.send_address %></td>
-           <td><%= customer.send_name %></td>
+           <td><%= customer.address %></td>
+           <td><%= cstomer.name %></td>
            <td> <%= f.submit "編集する", class:"btn btn-secondary" %> <%= f.submit "削除する", class:"btn btn-secondary" %></td>
          </tr>
         <% end %>
