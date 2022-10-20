@@ -4,9 +4,19 @@ class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
   def change
     create_table :customers do |t|
       ## Database authenticatable
+      # カラムの追加
+       t.string :firstname, null: false
+      t.string :lastname, null: false
+      t.string :kana_firstname, null: false
+      t.string :kana_lastname, null: false
+      # カラムの追加ここまで
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
-
+      # カラムの追加
+      t.integer :postcode, null: false
+      t.text :address, null: false
+      t.string :phone_number, null: false
+      # カラムの追加ここまで
       ## Recoverable
       t.string   :reset_password_token
       t.datetime :reset_password_sent_at
