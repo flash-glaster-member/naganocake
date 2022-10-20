@@ -14,10 +14,7 @@ Rails.application.routes.draw do
    sessions: "admin/sessions"
  }
 
-   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-
-
   scope module: :public do
     get 'orders/thanx'
     resources :products, only: [:index, :show]
