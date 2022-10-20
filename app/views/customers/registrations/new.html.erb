@@ -1,68 +1,67 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-<h2 class="bg-secondary">新規会員登録</h2>
+     <p class="sm-secondary">新規会員登録</p>
       <%= form_with model: @customer, url: customer_registration_path, id: 'new_customer', class: 'new_customerr', local: true do |f| %>
         <%= render "customers/shared/error_messages", resource: resource %>
         <div class="row g-3">
         <div class="col">
-          <%= f.label :lastname %><li>姓</li><br>
-          <%= f.text_field :lastname, autofocus: true　%><input type="text" class="form-control" placeholder="令和" aria-label="姓">
+          <%= f.label :（姓）%>
+          <%= f.text_field :lastname, placeholder: "令和", autofocus: true, class: "form-control"%>
         </div>
 
         <div class="col">
-          <%= f.label :firstname %><li>名</li><br>
-          <%= f.text_field :firstname, autofocus: true %><input type="text" class="form-control" placeholder="道子" aria-label="名">
+          <%= f.label :（名）%>
+          <%= f.text_field :firstname, placeholder: "道子", autofocus: true, class: "form-control"%>
         </div>
         </div>
         <div class="row g-3">
         <div class="col">
-          <%= f.label :kana_lastname %><li>カナ姓</li><br>
-          <%= f.text_field :kana_lastname, autofocus: true %><input type="text" class="form-control" placeholder="レイワ" aria-label="カナ姓">
-        </div>
-
-      　 <div class="col">
-          <%= f.label :kana_firsttname %><li>カナ名</li>
-          <%= f.text_field :kana_firstname,autofocus: true %><input type="text" class="form-control" placeholder="ミチコ" aria-label="カナ名">
-        </div>
-　　　　</div>
-        <div class="row g-3">
-        <div class="col">
-          <%= f.label :email %><li>メールアドレス</li><br>
-          <%= f.email_field :email,placeholder: "sample@example.com", autofocus: true, class: "email" %>
+          <%= f.label :（セイ） %>
+          <%= f.text_field :kana_last_name,placeholder: "レイワ", autofocus: true, class: "form-control"%>
         </div>
 
         <div class="col">
-          <%= f.label :postcode %><li>郵便番号(ハイフンなし)</li><br>
-          <%= f.text_field :postcode,placeholder: "０００００００", autofocus: true, class: "postcode" %>
+          <%= f.label :（メイ） %>
+          <%= f.text_field :kana_first_name,placeholder: "ミチコ",autofocus: true, class: "form-control" %>
         </div>
         </div>
-          <div class="col-md-6">
-          <%= f.label :address %><li>住所</li><br>
-          <%= f.text_field :address,placeholder: "東京都渋谷区代々木神園町０−０", autofocus: true, class: "address" %>
-        </div>
+         <div class="col-md-6">
         <div class="col">
-          <%= f.label :postcode %><li>電話番号(ハイフンなし)</li><br>
-          <%= f.text_field :postcode,placeholder: "０００００００００", autofocus: true, class: "postcode" %>
+          <%= f.label :メールアドレス %>
+          <%= f.email_field :email,placeholder: "sample@example.com", autofocus: true, class: "email" %><br>
         </div>
 
-          <div class="row g-3">
         <div class="col">
-          <%= f.label :password %><li>パスワード(6文字以上)</li>
+          <%= f.label :郵便番号（ハイフンなし） %>
+          <%= f.text_field :postcode,placeholder: "0000000", autofocus: true, class: "postcode" %><br>
+        </div>
+        </div>
+        <div class="col">
+          <%= f.label :住所 %>
+          <%= f.text_field :address,placeholder: "東京都渋谷区代々木神園町0-0", autofocus: true, class: "address" %><br>
+        </div>
+        <div class="col">
+          <%= f.label :電話番号（ハイフンなし） %>
+          <%= f.text_field :postcode,placeholder: "00000000000", autofocus: true, class: "postcode" %><br>
+        </div>
+
+        <div class="col">
+          <%= f.label :パスワード（６文字以上）%>
           <% if @minimum_password_length %>
           <em>(<%= @minimum_password_length %> characters minimum)</em>
           <% end %><br />
-          <%= f.password_field :password, autocomplete: "off", class: "password" %>
+          <%= f.password_field :password, autocomplete: "off", class: "password" %><br>
         </div>
         <div class="col">
-          <%= f.label :password_confirmation %><li>パスワード(確認用)</li><br>
+          <%= f.label :パスワード（確認用）%>
           <%= f.password_field :password_confirmation, autocomplete: "off", class: "password_confirm" %>
         </div>
         <div class="actions">
           <%= f.submit "新規登録" ,class: 'btn btn-sm btn-success' %>
         </div>
-      <% end %>
-      </div>
+          <% end %>
+        </div>
       <%= render "devise/shared/links" %>
     </div>
   </div>

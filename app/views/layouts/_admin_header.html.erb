@@ -4,9 +4,8 @@
 
       <a class="navbar-brand" href="/">
         <button type="button" class="btn btn-outline-dark rounded-0 "><h2> LOGO </h2></button></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-
-      </button>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
         <% if admin_signed_in? %>
@@ -16,7 +15,7 @@
             <% end %>
           </li>
           <li>
-            <%=  link_to admin_customerss_path,class: 'nav-link text-light' do %>
+            <%=  link_to admin_customers_path,class: 'nav-link text-light' do %>
               <button type="button" class="btn btn-light">会員一覧</button>
             <% end %>
           </li>
@@ -25,7 +24,7 @@
               <button type="button" class="btn btn-light">注文履歴一覧</button>
             <% end %>
           </li>
-           <li>
+          <li>
             <%=  link_to admin_genres_path ,class: 'nav-link text-light' do %>
               <button type="button" class="btn btn-light">ジャンル一覧</button>
             <% end %>
