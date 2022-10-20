@@ -1,12 +1,15 @@
+<!--カート内商品表示-->
 <div class='container px-5 px-sm-0'>
       <h2>ショッピングカート</h2>
       <table class='table table-hover table-inverse'>
         <thead>
           <tr>
             <th></th>
-            <th>Title</th>
-            <th>Opinion</th>
-            <th colspan="5"></th>
+            <th>商品名</th>
+            <th>単価（税込）</th>
+            <th>数量</th>
+            <th>小計</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -16,7 +19,7 @@
               <td><%= product.name %></td>
               <td><%= product.price %></td>
               <td>
-                <%= f.select :volume, [["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"], ["7", "7"], ["8", "8"], ["9", "9"], ["10", "10"]], cart.volume %>
+                <%= f.select :amount, [["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"], ["7", "7"], ["8", "8"], ["9", "9"], ["10", "10"]], cart.volume %>
                 <%= f.submit '変更'%>
               </td>
               <td><%= subtotal %></td>
@@ -24,7 +27,9 @@
             </tr>
           <% end %>
         </tbody>
-</table>
-    </div>
-  </div>
-</div>
+      </table>
+
+      <%=  link_to products_path,class: 'nav-link text-light btn-info' do %>
+        <button>買い物を続ける</button>
+      <% end %>
+ </div>

@@ -1,0 +1,33 @@
+<!--注文確認画面-->
+<div class='container px-5 px-sm-0'>
+    <h2>注文情報確認</h2>
+      <table class='table table-hover table-inverse'>
+        <thead>
+          <tr>
+            <th></th>
+            <th>商品名</th>
+            <th>単価（税込）</th>
+            <th>数量</th>
+            <th>小計</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @cart_products.each do |cart_product| %>
+            <tr>
+              <td><%= image_tag cart_product.product.get_product_image, size:'50x50' %>
+              <%= product.name %></td>
+              <td><%= product.price %></td>
+              <td><%= product.amount %></td>
+              <td><%= subtotal %></td>
+              <!--削除ボタン-->
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <h3>支払い方法</h3><%= order.pay_way%>
+
+      <h3>お届け先</h3><%= order.address_display%>
+
+</div>
