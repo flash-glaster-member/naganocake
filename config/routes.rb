@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root :to =>"homes#top"
-   get 'homes/about', as: "about"
+   get 'homes/about', as:"about"
 
 
  # 顧客用
@@ -14,11 +14,7 @@ Rails.application.routes.draw do
    sessions: "admin/sessions"
  }
 
-    get 'orders/thanx'
-    # 退会確認画面
-    get "/customers/quite" => 'customers#quite', as: 'quite'
-    # 論理削除用のルーティング
-    patch "/customers/out" => 'customers#out', as: 'out'
+   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
 
@@ -31,7 +27,7 @@ Rails.application.routes.draw do
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
 
 
-    get 'orders/thanx'
+   
     # 退会確認画面
     get "/customers/quite" => 'customers#quite', as: 'quite'
     # 論理削除用のルーティング
