@@ -6,8 +6,8 @@ class Customer < ApplicationRecord
 
          validates :firstname, presence: true
          validates :lastname, presence: true
-         validates :kana_firstname, presence: true
-         validates :kana_lastname, presence: true
+         validates :kana_first_name, presence: true
+         validates :kana_last_name, presence: true
          validates :postcode, presence: true
          validates :address, presence: true
          validates :email, presence: true

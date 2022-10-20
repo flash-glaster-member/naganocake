@@ -42,11 +42,6 @@
           <%= f.text_field :address,placeholder: "東京都渋谷区代々木神園町0-0", autofocus: true, class: "address" %><br>
         </div>
         <div class="col">
-          <%= f.label :電話番号（ハイフンなし） %>
-          <%= f.text_field :postcode,placeholder: "00000000000", autofocus: true, class: "postcode" %><br>
-        </div>
-
-        <div class="col">
           <%= f.label :パスワード（６文字以上）%>
           <% if @minimum_password_length %>
           <em>(<%= @minimum_password_length %> characters minimum)</em>

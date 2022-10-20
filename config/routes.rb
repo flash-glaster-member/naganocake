@@ -14,14 +14,6 @@ Rails.application.routes.draw do
    sessions: "admin/sessions"
  }
 
-    get 'orders/thanx'
-    # 退会確認画面
-    get "/customers/quite" => 'customers#quite', as: 'quite'
-    # 論理削除用のルーティング
-    patch "/customers/out" => 'customers#out', as: 'out'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-
-
   scope module: :public do
     get 'orders/thanx'
     resources :products, only: [:index, :show]
