@@ -1,0 +1,68 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+     <p class="sm-secondary">新規会員登録</p>
+      <%= form_with model: @customer, url: customer_registration_path, id: 'new_customer', class: 'new_customerr', local: true do |f| %>
+        <%= render "customers/shared/error_messages", resource: resource %>
+        <div class="row g-3">
+        <div class="col">
+          <%= f.label :（姓）%>
+          <%= f.text_field :lastname, placeholder: "令和", autofocus: true, class: "form-control"%>
+        </div>
+
+        <div class="col">
+          <%= f.label :（名）%>
+          <%= f.text_field :firstname, placeholder: "道子", autofocus: true, class: "form-control"%>
+        </div>
+        </div>
+        <div class="row g-3">
+        <div class="col">
+          <%= f.label :（セイ） %>
+          <%= f.text_field :kana_last_name,placeholder: "レイワ", autofocus: true, class: "form-control"%>
+        </div>
+
+        <div class="col">
+          <%= f.label :（メイ） %>
+          <%= f.text_field :kana_first_name,placeholder: "ミチコ",autofocus: true, class: "form-control" %>
+        </div>
+        </div>
+         <div class="col-md-6">
+        <div class="col">
+          <%= f.label :メールアドレス %>
+          <%= f.email_field :email,placeholder: "sample@example.com", autofocus: true, class: "email" %><br>
+        </div>
+
+        <div class="col">
+          <%= f.label :郵便番号（ハイフンなし） %>
+          <%= f.text_field :postcode,placeholder: "0000000", autofocus: true, class: "postcode" %><br>
+        </div>
+        </div>
+        <div class="col">
+          <%= f.label :住所 %>
+          <%= f.text_field :address,placeholder: "東京都渋谷区代々木神園町0-0", autofocus: true, class: "address" %><br>
+        </div>
+        <div class="col">
+          <%= f.label :電話番号（ハイフンなし） %>
+          <%= f.text_field :postcode,placeholder: "00000000000", autofocus: true, class: "postcode" %><br>
+        </div>
+
+        <div class="col">
+          <%= f.label :パスワード（６文字以上）%>
+          <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %><br />
+          <%= f.password_field :password, autocomplete: "off", class: "password" %><br>
+        </div>
+        <div class="col">
+          <%= f.label :パスワード（確認用）%>
+          <%= f.password_field :password_confirmation, autocomplete: "off", class: "password_confirm" %>
+        </div>
+        <div class="actions">
+          <%= f.submit "新規登録" ,class: 'btn btn-sm btn-success' %>
+        </div>
+          <% end %>
+        </div>
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+</div>
