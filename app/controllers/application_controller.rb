@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+
   before_action :authenticate_admin!, except: [:top, :about]
   before_action :authenticate_customer!, except: [:top, :about]
 
@@ -15,7 +16,9 @@ class ApplicationController < ActionController::Base
    protected
 
   def configure_permitted_parameters
+
     devise_parameter_sanitizer.permit(:sign_up, keys: [:firstname, :lastname, :kana_first_name, :kana_last_name, :postcode, :address, :email, :password])
+
 
   end
 end
