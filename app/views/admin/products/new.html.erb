@@ -3,7 +3,7 @@
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
       <h2>商品新規登録</h2>
       <%= form_with model: @product,url:admin_products_path do |f| %>
-      <div class="form-group">
+        <div class="form-group">
         <%= f.label :product_image, "商品画像" %>
         <%= f.file_field :product_image, sccept: "image/*" %>
         </div>
@@ -17,7 +17,7 @@
         </div>
         <div class="form-group">
           <%= f.label :genre_id, "ジャンル" %>
-          <%= f.collection_select :genre_id, Genre.all, :name, :name, prompt: "--選択してください--" %>
+          <%= f.collection_select :genre_id, Genre.all, :id, :name, prompt: "--選択してください--" %>
         </div>
         <div class="form-group">
           <%= f.label :price, "税抜価格" %>
@@ -25,12 +25,12 @@
         </div>
         <div class="form-group">
           <%= f.label :is_active, "販売ステータス" %>
-        <label>
-          <%= f.radio_button :is_active, "販売中", {:checked => true} %>販売中
-        </label>
-        <label>
-          <%= f.radio_button :is_active, "販売停止中" %>販売停止中
-        </label>
+          <label>
+            <%= f.radio_button :is_active, true, {:checked => true} %>販売中
+          </label>
+          <label>
+            <%= f.radio_button :is_active, false %>販売停止中
+          </label>
         </div>
         <div class="form-group">
           <%= f.submit '新規登録', class: 'btn btn-success' %>
@@ -38,3 +38,4 @@
       <% end %>
     </div>
   </div>
+</div>

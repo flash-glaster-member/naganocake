@@ -2,14 +2,14 @@
   <nav class="navbar navbar-expand-lg navbar-white bg-white">
     <div class="container">
       <a class="navbar-brand" href="/">
-         <button type="button" class="btn btn-outline-dark rounded-0 "><h2> LOGO </h2></button></a>
+         <button type="button" class="btn btn-outline-dark rounded-0 "><h2>  <%= image_tag "logo.png", size: '100x50'%> </h2></button></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
         <% if customer_signed_in? %>
           <li>
-            <%= link_to customers_path,class: 'nav-link text-light' do %>
+            <%= link_to customer_path(current_customer),class: 'nav-link text-light' do %>
                <button type="button" class="btn btn-light">マイページ</button>
             <% end %>
           </li>
@@ -24,7 +24,7 @@
             <% end %>
           </li>
           <li>
-            <%= link_to destroy_session_path, method: :delete,class: 'nav-link text-light' do %>
+            <%= link_to destroy_session_path(current_customer), method: :delete,class: 'nav-link text-light' do %>
               <button type="button" class="btn btn-light">ログアウト</button>
             <% end %>
           </li>

@@ -1,49 +1,41 @@
 <div class="container">
   <div class="row">
 
- <h2>マイページ</h2>
+    <h2>マイページ</h2>
 
-  <h3>登録情報</h3>
-   <div class="form-group">
-    <%= form_with model: @customer do |f| %>
-     <%= f.submit "編集する", class:"btn btn-secondary" %>
-   </div>
+    <h3>登録情報</h3>
+    <div class="form-group">
+      <%=  link_to edit_customer_path ,class: 'nav-link text-light' do %>
+        <button type="button" class="btn btn-light">編集</button>
+      <% end %>
+    </div>
 
-   <table>
-   <tr>
-    <td>氏名</td>
-    <td><%= @customer.lastname %><%= @customer.frstname %></td>
-   </tr>
-   <tr>
-    <td>カナ</td>
-    <td><%= @customer.kana_last_name %><%= @customer.kana_frst_name %></td>
-   </tr>
-   <tr>
-    <td>郵便番号</td>
-    <td><%= @customer.postcode %></td>
-   </tr>
-   <tr>
-    <td>住所</td>
-    <td><%= @customer.adress %></td>
-   </tr>
-   <tr>
-    <td>電話番号</td>
-    <td><%= @customer.phone_number %></td>
-   </tr>
-   <tr>
-    <td>メールアドレス</td>
-    <td><%= @customer.email %></td>
-   </tr>
- </table>
+    <table>
+      <tr>
+        <td>氏名</td>
+        <td><%= @customer.lastname %><%= @customer.firstname %></td>
+      </tr>
+      <tr>
+        <td>カナ</td>
+        <td><%= @customer.kana_last_name %><%= @customer.kana_first_name %></td>
+      </tr>
+      <tr>
+        <td>郵便番号</td>
+        <td><%= @customer.postcode %></td>
+      </tr>
+      <tr>
+        <td>住所</td>
+        <td><%= @customer.address %></td>
+      </tr>
+      <tr>
+        <td>メールアドレス</td>
+        <td><%= @customer.email %></td>
+      </tr>
+    </table>
+    <h2>配送先</h2>
 
-  <h2>配送先</h2>
-   <div class="form-group">
-     <%= f.submit "一覧を見る", class:"btn btn-secondary" %>
-   </div>
-  <h2>注文履歴</h2>
-   <div class="form-group">
-     <%= f.submit "一覧を見る", class:"btn btn-secondary" %>
-   </div>
+    <h2>注文履歴</h2>
 
- </div>
+
+  </div>
 </div>
