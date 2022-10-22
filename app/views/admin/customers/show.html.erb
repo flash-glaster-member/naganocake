@@ -29,10 +29,18 @@
           <td>メールアドレス</td>
           <td><%= @customer.email %></td>
         </tr>
+
+      <%= form_with model: @customer do |f| %>
         <tr>
           <td>会員ステータス</td>
-          <td><%= @customer.status%></td>
+          <td><%= f.radio_button :status, true %>
+              <%= f.label :status_true,"有効" %>
+
+              <%= f.radio_button :status, false %>
+              <%= f.label :status_false, "退会" %>
+          </td>
         </tr>
+      <% end %>
       </tbody>
      </table>
 
