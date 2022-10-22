@@ -15,11 +15,25 @@
   <tbody>
     <% @products.each do |product| %>
     <tr>
-      <td></td>
-      <td><%= product.name %></td>
+      <td><%= product.id %></td>
+      <td>
+        <%=  link_to admin_product_path(product.id),class: 'nav-link' do %>
+          <%= product.name %>
+        <% end %>
+      </td>
       <td><%= product.price %></td>
-      <td></td>
-      <td></td>
+
+      <td>
+        <%= @genres.find(product.genre_id).name %>
+      </td>
+
+      <td>
+        <% if product.is_active? %>
+          <td>販売中</td>
+        <% else %>
+          <td>販売停止中</td>
+        <% end %>
+      </td>
       <td></td>
     </tr>
     <% end %>

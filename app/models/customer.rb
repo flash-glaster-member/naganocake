@@ -22,7 +22,7 @@ class Customer < ApplicationRecord
     super && (is_deleted == false)
   end
 
-  def name
+  def customer_name
     firstname + lastname
   end
 end
