@@ -1,5 +1,4 @@
-<h2>ジャンル一覧・追加</h2>
-
+<h1>ジャンル一覧・追加</h1>
 <%= form_with model: @genre,url:admin_genres_path do |f| %>
   <div class="form-group">
     <%= f.label :name, "ジャンル名" %>
@@ -8,13 +7,12 @@
   </div>
 <% end %>
 
+ <table>
 <table class='table'>
   <thead>
     <tr>
       <th>ジャンル</th>
       <th></th>
-
-
     </tr>
   </thead>
   <tbody>
@@ -29,6 +27,5 @@
     </tr>
     <% end %>
   </tbody>
+ </table>
 </table>
-
-

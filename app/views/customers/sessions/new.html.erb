@@ -1,26 +1,52 @@
-
-<h2>ログイン</h2>
-<%= form_for(resource, as: resource_name, url: customer_session_path(resource_name)) do |f| %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<div class="container">
+  <div class="row">
+    <div class="col-2">
+    </div>
+      <h5 class="d-flex justify-content-left mb-5 bg-secondary p-2 text-black bg-opacity-10">ログイン</h5>
   </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
+  <div class="row">
+    <div class="col-2">
+    </div>
+      <h6 class="d-flex justify-content-left mb-3 bg-secondary p-2 text-black bg-opacity-10">会員の方はこちらからログイン</h6>
   </div>
+      <%= form_for(resource, as: resource_name, url: customer_session_path(resource_name)) do |f| %>
 
-  <% if devise_mapping.rememberable? %>
-  <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-  </div>
-  <% end %>
+        <div class="field row mb-4">
+          <div class="col-2"></div>
+          <%= f.label :メールアドレス, class: "col-2" %>
+          <%= f.email_field :email,placeholder: "sample@example.com", autofocus: true, autocomplete: "email", class: "col-4" %>
+        </div>
 
-  <div class="actions">
-    <%= f.submit "ログイン" %>
-  </div>
-  <% end %>
+        <div class="field row mb-4">
+           <div class="col-2"></div>
+          <%= f.label :パスワード ,class: "col-2"%>
+          <%= f.password_field :password, autocomplete: "current-password", class: "col-4" %>
+        </div>
 
+        <% if devise_mapping.rememberable? %>
+        <div class="field row mb-1">
+           <div class="col-2"></div>
+            <%= f.check_box :remember_me %>
+            <%= f.label :覚えまっか？%>
+        </div>
+        <% end %>
+
+        <div class="field row mb-4">
+           <div class="col-4"></div>
+          <%= f.submit "ログイン",class: "btn btn-sm btn-primary" %>
+        </div>
+        <% end %>
+        <div class="row">
+         <div class="col-2">
+         </div>
+          <h6 class="d-flex justify-content-left mb-3 bg-secondary p-2 text-black bg-opacity-10">会員登録がお済みでない方</h6>
+        </div>
+        <div class="row">
+         <div class="col-3">
+         </div>
+           <p><%= link_to "こちら",new_customer_registration_path, class: "link-primary"%> から新規登録を行ってしてください。</P>
+        </div>
+        
+        <%= from_tag %>
+        <input type="submit">
+</div>
