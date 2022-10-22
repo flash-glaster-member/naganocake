@@ -14,10 +14,11 @@
         </thead>
         <tbody>
           <% @cart_products.each do |cart_product| %>
+          <% product_id = cart_product.product_id %>
             <tr>
-              <td><%= image_tag cart_product.product.get_product_image, size:'50x50' %></td>
-              <td><%= product.name %></td>
-              <td><%= product.price %></td>
+              <td><%= image_tag Product.find([:product_id]).get_product_image, size:'50x50' %></td>
+              <td><%= cart_product.product_name %></td>
+              <td><%= cart_product.product_price %></td>
               <td>
                 <%= f.select :amount, [["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"], ["7", "7"], ["8", "8"], ["9", "9"], ["10", "10"]], cart.volume %>
                 <%= f.submit '変更'%>

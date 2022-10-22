@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 
-  before_action :authenticate_admin!||:authenticate_customer!, except: [:top, :about]
+  before_action :authenticate_any!, except: [:top, :about,:index]
 
 
 
@@ -13,6 +13,14 @@ class ApplicationController < ActionController::Base
    def after_sign_up_path_for(resource)
       customers_path
    end
+
+   def authenticate_any!
+  if admin_signed_in?
+      true
+  else
+      authenticate_customer!
+  end
+end
 
    protected
 
