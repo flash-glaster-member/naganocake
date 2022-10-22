@@ -32,7 +32,14 @@
 
       <!--新着商品一覧表示-->
      <h3>新着商品</h3>
-     <%# <%= render 'index', books: @books%>
+     <% @products.each do |product| %>
+     <%=  link_to product_path(product.id),class: 'nav-link' do %>
+     <%= image_tag product.get_product_image, size:'100x100'%>
+     <%= product.name %>
+     <% end %>
+     <%= product.price %>
+     <% end %>
+
      <div class='test-right'>
      <%= link_to "全ての商品を見る>",products_path,class: "test-right link-primary"%>
      </div>
