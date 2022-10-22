@@ -1,0 +1,25 @@
+<%# admin/customer/index %>
+
+<table class='table'>
+  <caption>会員一覧</caption>
+  <thead>
+    <tr>
+      <th>会員ID</th>
+      <th>氏名</th>
+      <th>メールアドレス</th>
+      <th>ステータス</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% customer.each do |customer| %>
+      <tr>
+        <td><%= customer.id %></td>
+        <td><%= link_to 'customer.name', customers, class: "customer_#{customer.id}" %></td>
+        <td><%= customer.email %></td>
+        <td><%= customer.status %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= paginate post_images %>
