@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root :to =>"homes#top"
-   get 'homes/about', as: "about"
+   get 'homes/about', as:"about"
 
 
  # 顧客用
@@ -8,13 +8,16 @@ Rails.application.routes.draw do
    registrations: "public/registrations",
    sessions: 'public/sessions'
  }
+
  scope module: :public do
     get 'orders/thanks' => "orders#thanx"
+
     resources :products, only: [:index, :show]
     resources :customers, only: [:show, :edit, :update, :quite, :out]
     resources :cart_products, only: [:index, :update, :destroy, :all_destroy, :create]
     resources :orders, only: [:new, :log, :thanx, :create, :index, :show]
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
+
 
     # 退会確認画面
     get "/customers/quite" => 'customers#quite', as: 'quite'
@@ -41,3 +44,4 @@ Rails.application.routes.draw do
 
 
 end
+

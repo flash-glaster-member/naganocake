@@ -12,6 +12,11 @@ class Admin::CustomersController < ApplicationController
   end
 
   def update
+    if @customer.update(customer_params)
+      redirect_to admin_customers_path(@customer), notice: "会員情報の編集に成功しました"
+    else
+      render "admin_customer_edit"
+    end
   end
 
 end

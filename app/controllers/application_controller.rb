@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_admin!||:authenticate_customer!, except: [:top, :about]
 
 
+
   before_action :configure_permitted_parameters, if: :devise_controller?
 
    def configure_sign_up_params
