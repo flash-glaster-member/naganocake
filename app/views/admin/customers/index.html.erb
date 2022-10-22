@@ -1,7 +1,7 @@
-<%# admin/customer/index %>
+<h2>会員一覧</h2>
 
 <table class='table'>
-  <caption>会員一覧</caption>
+
   <thead>
     <tr>
       <th>会員ID</th>
@@ -10,16 +10,25 @@
       <th>ステータス</th>
     </tr>
   </thead>
-
   <tbody>
-    <% customer.each do |customer| %>
-      <tr>
-        <td><%= customer.id %></td>
-        <td><%= link_to 'customer.name', customers, class: "customer_#{customer.id}" %></td>
-        <td><%= customer.email %></td>
-        <td><%= customer.status %></td>
-      </tr>
+    <% @customers.each do |customer| %>
+    <tr>
+      <td><%= customer.id %></td>
+
+      <td>
+        <%=  link_to admin_customer_path(customer.id),class: 'nav-link' do %>
+          <%= customer.lastname %><%= customer.firstname %>
+        <% end %>
+      </td>
+      <td><%= customer.email %></td>
+      <td>
+        <% if customer.is_deleted? %>
+          退会
+        <% else %>
+          有効
+        <% end %>
+      </td>
+    </tr>
     <% end %>
   </tbody>
 </table>
-<%= paginate post_images %>

@@ -9,15 +9,9 @@ Rails.application.routes.draw do
    sessions: 'public/sessions'
  }
 
- # 管理者用
- devise_for :admin, skip: [:registrations, :passwords], controllers: {
-   sessions: "admin/sessions"
- }
+ scope module: :public do
+    get 'orders/thanks' => "orders#thanx"
 
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-
-  scope module: :public do
-    get 'orders/thanx'
     resources :products, only: [:index, :show]
     resources :customers, only: [:show, :edit, :update, :quite, :out]
     resources :cart_products, only: [:index, :update, :destroy, :all_destroy, :create]
@@ -25,7 +19,6 @@ Rails.application.routes.draw do
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
 
 
-   
     # 退会確認画面
     get "/customers/quite" => 'customers#quite', as: 'quite'
     # 論理削除用のルーティング
@@ -33,12 +26,20 @@ Rails.application.routes.draw do
 
   end
 
+ # 管理者用
+ devise_for :admin, skip: [:registrations, :passwords], controllers: {
+   sessions: "admin/sessions"
+ }
+
+
+
   namespace :admin do
     root :to => "homes#top"
     resources :products, only: [:index, :new, :create, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
-    resources :order_details, only: [:index, :update,]
+    resources :orders, only: [:index, :show]
+    resources :order_details, only: [:update]
   end
 
 

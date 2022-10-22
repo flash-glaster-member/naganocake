@@ -1,1 +1,41 @@
-<h2>商品編集画面</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <h2>商品編集画面</h2>
+      <%= form_with model: @product,url:admin_product_path do |f| %>
+        <div class="form-group">
+        <%= f.label :product_image, "商品画像" %>
+        <%= f.file_field :product_image, sccept: "image/*" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :name, "商品名" %>
+          <%= f.text_field :name, placeholder: @product.name %>
+        </div>
+        <div class="form-group">
+          <%= f.label :description, "商品説明" %>
+          <%= f.text_area :description, placeholder: @product.description %>
+        </div>
+        <div class="form-group">
+          <%= f.label :genre_id, "ジャンル" %>
+          <%= f.collection_select :genre_id, Genre.all, :id, :name, prompt:  @genres.find(@product.genre_id).name %>
+        </div>
+        <div class="form-group">
+          <%= f.label :price, "税抜価格" %>
+          <%= f.number_field :price, placeholder: @product.price %>円
+        </div>
+        <div class="form-group">
+          <%= f.label :is_active, "販売ステータス" %>
+          <label>
+            <%= f.radio_button :is_active, true, {:checked => true} %>販売中
+          </label>
+          <label>
+            <%= f.radio_button :is_active, false %>販売停止中
+          </label>
+        </div>
+        <div class="form-group">
+          <%= f.submit '変更を保存', class: 'btn btn-success' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
