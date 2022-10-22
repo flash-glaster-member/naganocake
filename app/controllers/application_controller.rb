@@ -1,9 +1,6 @@
 class ApplicationController < ActionController::Base
 
-  before_action :authenticate_admin!||:authenticate_customer!, except: [:top, :about]
-
-
-
+  before_action :authenticate_customer!||:authenticate_admin!, except: [:top, :about, "public/products/index"]
   before_action :configure_permitted_parameters, if: :devise_controller?
 
    def configure_sign_up_params
@@ -12,6 +9,14 @@ class ApplicationController < ActionController::Base
 
    def after_sign_up_path_for(resource)
       customers_path
+   end
+
+   def authenticate_any!
+    if admin_signed_in?
+      true
+    else
+      authenticate_customer!
+    end
    end
 
    protected

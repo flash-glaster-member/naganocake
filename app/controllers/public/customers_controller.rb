@@ -7,6 +7,7 @@ class Public::CustomersController < ApplicationController
   end
 
   def edit
+    @customer = Customer.find(params[:id])
   end
 
   def quite
@@ -20,10 +21,13 @@ class Public::CustomersController < ApplicationController
   def out
   end
 
+  def update
+  end
+
   private
 
   def customer_params
-    params.require(:customer).permit(:lastname, :firstname, :kana_lastname, :kana_firstname, :postcode, :address)
+    params.require(:customer).permit(:lastname, :firstname, :kana_lastname, :kana_firstname, :postcode, :address, :phone_number)
   end
 
 end

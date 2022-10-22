@@ -1,13 +1,18 @@
 Rails.application.routes.draw do
   root :to =>"homes#top"
    get 'homes/about', as:"about"
-
+   get 'public/ptoducts/index' => 'products#index' , as: 'products'
 
  # 顧客用
  devise_for :customers, skip: [:passwords], controllers: {
    registrations: "public/registrations",
    sessions: 'public/sessions'
  }
+  # 管理者用
+ devise_for :admin, skip: [:registrations, :passwords], controllers: {
+   sessions: "admin/sessions"
+ }
+
 
  scope module: :public do
     get 'orders/thanks' => "orders#thanx"
@@ -26,10 +31,6 @@ Rails.application.routes.draw do
 
   end
 
- # 管理者用
- devise_for :admin, skip: [:registrations, :passwords], controllers: {
-   sessions: "admin/sessions"
- }
 
 
 
