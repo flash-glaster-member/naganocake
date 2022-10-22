@@ -2,12 +2,17 @@ Rails.application.routes.draw do
   root :to =>"homes#top"
    get 'homes/about', as: "about"
 
-
  # 顧客用
  devise_for :customers, skip: [:passwords], controllers: {
    registrations: "public/registrations",
    sessions: 'public/sessions'
  }
+
+ # 管理者用
+ devise_for :admin, skip: [:registrations, :passwords], controllers: {
+   sessions: "admin/sessions"
+ }
+
  scope module: :public do
     get 'orders/thanks' => "orders#thanx"
     resources :products, only: [:index, :show]
@@ -22,13 +27,6 @@ Rails.application.routes.draw do
     patch "/customers/out" => 'customers#out', as: 'out'
 
   end
-
- # 管理者用
- devise_for :admin, skip: [:registrations, :passwords], controllers: {
-   sessions: "admin/sessions"
- }
-
-
 
   namespace :admin do
     root :to => "homes#top"
