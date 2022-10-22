@@ -1,5 +1,13 @@
-<h2>ログイン</h2>
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<div class="container">
+  <div class="row">
+    <div class="col-1">
+    </div>
+     <h5 class="d-flex justify-content-left mb-5 bg-secondary">ログイン</h5>
+  </div>
+     <div class="col-1">
+     <h5 class="d-flex justify-content-left mb-3 bg-secondary">会員の方はこちらからログイン</h5>
+     </div>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
@@ -11,14 +19,14 @@
   </div>
 
   <% if devise_mapping.rememberable? %>
-    <div class="field">
+  <div class="field">
       <%= f.check_box :remember_me %>
       <%= f.label :remember_me %>
-    </div>
+  </div>
   <% end %>
 
   <div class="actions">
     <%= f.submit "ログイン" %>
   </div>
-<% end %>
+  <% end %>
 
