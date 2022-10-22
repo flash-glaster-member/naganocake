@@ -14,6 +14,7 @@ Rails.application.routes.draw do
    sessions: "admin/sessions"
  }
 
+
   scope module: :public do
     get 'orders/thanx'
     resources :products, only: [:index, :show]
