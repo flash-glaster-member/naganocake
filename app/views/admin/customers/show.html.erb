@@ -1,6 +1,6 @@
 <%# admin/customer/show %>
   <div>
-     <h2><%= @customer.name %>さんの会員情報</h2>
+     <h2><%= @customer.lastname%><%= @customer.firstname%>さんの会員情報</h2>
      <table class="table table-hover table-inverse">
       <tbody>
         <tr>
@@ -9,7 +9,7 @@
         <tr>
         <tr>
           <td>氏名</td>
-          <td><%= @customer.last_name%><%= @customer.first_name%></td>
+          <td><%= @customer.lastname%><%= @customer.firstname%></td>
         <tr>
           <td>フリガナ</td>
           <td><%= @customer.kana_last_name %><%= @customer.kana_first_name %></td>
@@ -20,27 +20,21 @@
         </tr>
         <tr>
           <td>住所</td>
-          <td><%= @customer.addresses %></td>
-        <tr>
-          <td>電話番号</td>
-          <td><%= @customer.phone_number %></td>
-        </tr>
+          <td><%= @customer.address %></td>
         <tr>
           <td>メールアドレス</td>
           <td><%= @customer.email %></td>
         </tr>
-
-      <%= form_with model: @customer do |f| %>
         <tr>
           <td>会員ステータス</td>
-          <td><%= f.radio_button :status, true %>
-              <%= f.label :status_true,"有効" %>
-
-              <%= f.radio_button :status, false %>
-              <%= f.label :status_false, "退会" %>
+          <td>
+          <% if @customer.is_deleted? %>
+            退会
+          <% else %>
+            有効
+          <% end %>
           </td>
         </tr>
-      <% end %>
       </tbody>
      </table>
 
