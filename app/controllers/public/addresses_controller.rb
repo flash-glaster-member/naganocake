@@ -1,8 +1,8 @@
-class Public::AddressesController < ApplicationControlle
+class Public::AddressesController < ApplicationController
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
   def index
-    @customer = Customer.find(params[:id])
+    @customer = current_customer
     @addresses = @customer.addresses
     @address = Address.new
   end
@@ -14,13 +14,13 @@ class Public::AddressesController < ApplicationControlle
 
   def create
     @address = Address.new(address_params)
-    @address.user_id = current_user.id
+    @address.customer_id = current_customer.id
     if @address.save
       redirect_to addresses_path(@address), notice: "配送先が新たに登録されました"
     else
-      @customer = Customer.find(params[:id])
+      @customer = current_customer
       @addresses = @customer.addresses
-      render 'address/index'
+      render "public/addresses/index"
     end
   end
 
@@ -28,7 +28,7 @@ class Public::AddressesController < ApplicationControlle
     if @address.update(address_params)
       redirect_to addresses_path(@address), notice: "配送先の編集が完了しました"
     else
-      render "address/edit"
+      render "addresses/edit"
     end
   end
 

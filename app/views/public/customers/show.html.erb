@@ -5,7 +5,7 @@
        <%= form_with model: @customer do |f| %>
        <div class="form-group" font-weight="bold">
         <%= f.label "登録情報" %>
-        <%= f.submit "編集する" , class: 'btn btn-success' %>
+        <%= link_to "編集する", edit_customer_path, class: 'btn btn-default' %>
        </div>
 
           <table border="1" width="50%" height="200">
@@ -31,14 +31,15 @@
             </tr>
           </table>
 
-       <div class="form-group">
-        <%= f.label "配送先" %>
-        <%= f.submit "一覧を見る" , class: 'btn btn-success' %>
-       </div>
-
-       <div class="form-group">
-        <%= f.label "注文履歴" %>
-        <%= f.submit "一覧を見る" , class: 'btn btn-success' %>
-       </div>
-       <% end %>
+　　　　　<div class="field row mb-2">
+           <div class="form-group">
+            <%= f.label "配送先" %>
+            <%= link_to "一覧を見る", addresses_path, class: 'btn btn-default' %>
+           </div>
+           <div class="form-group">
+            <%= f.label "注文履歴" %>
+            <%= link_to "一覧を見る", orders_path, class: 'btn btn-default' %>
+           </div>
+           <% end %>
+          </div>
 

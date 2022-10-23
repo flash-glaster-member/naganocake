@@ -18,10 +18,15 @@ class Public::CustomersController < ApplicationController
     redirect_to root_path
   end
 
-  def out
+  def update
+    if @customer.update(customer_params)
+      redirect_to customer_path(@customer), notice: "会員情報の編集が完了しました"
+    else
+      render "edit/customer"
+    end
   end
 
-  def update
+  def out
   end
 
   private

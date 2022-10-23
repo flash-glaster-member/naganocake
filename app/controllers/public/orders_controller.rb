@@ -1,5 +1,5 @@
 class Public::OrdersController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_customer!
 
   def new
     @order = Order.new
@@ -12,7 +12,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @customer = Customer.find(params[:id])
+    @customer = current_customer
     @orders = @customer.orders
   end
 
