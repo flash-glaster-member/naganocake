@@ -23,6 +23,10 @@ class Customer < ApplicationRecord
   end
 
   def customer_name
-    firstname + lastname
+    lastname + firstname
+  end
+
+  def address_display
+    '〒' + postcode + ' ' + address + ' ' + firstname + lastname
   end
 end

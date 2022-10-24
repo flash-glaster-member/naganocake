@@ -3,7 +3,7 @@
 
       <h2>注文履歴詳細</h2>
 
-          <caption>登録情報</caption>
+          <caption>注文情報</caption>
            <table>
            <tr>
             <td>注文日</td>
@@ -15,19 +15,19 @@
            </tr>
            <tr>
             <td>支払方法</td>
-            <td><%= @order.payment_method %></td>
+            <td><%= @order.pay_way_i18n %></td>
            </tr>
            <tr>
             <td>ステータス</td>
-            <td><%= @order.status %></td>
+            <td><%= @order.status_i18n %></td>
            </tr>
            </table>
 
-          <caption>登録情報</caption>
+          <caption>請求情報</caption>
            <table>
            <tr>
             <td>商品合計</td>
-            <td><%= @order.price %></td>
+            <td><%= @order.total_price %></td>
            </tr>
            <tr>
             <td>配送料</td>
@@ -35,7 +35,7 @@
            </tr>
            <tr>
             <td>ご請求額</td>
-            <td><%= @order.total_price %></td>
+            <td><%= @order.total_price + @order.postage%></td>
            </tr>
          </table>
 
@@ -49,12 +49,12 @@
          </tr>
         </thead>
         <tbody>
-          <% @orders.each do |order| %>
+          <% @order.order_details.each do |order| %>
            <tr>
-             <td><%= order.products_title %></td>
-             <td><%= order.price %></td>
+             <td><%= Product.find(order.product_id).name %></td>
+             <td><%= Product.find(order.product_id).price %></td>
              <td><%= order.amount %></td>
-             <td><%= order.total_price %></td>
+             <td><%= order.subtotal %></td>
            </tr>
           <% end %>
      </tbody>

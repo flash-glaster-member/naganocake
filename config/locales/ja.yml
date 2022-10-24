@@ -4,3 +4,15 @@
         pay_way:
           credit_card: "クレジットカード"
           transfer: "銀行振込"
+        status:
+          waiting: "入金待ち"
+          confirm: "入金確認"
+          construction: "制作中"
+          preparing: "発送準備中"
+          sent: "発送済み"
+      order_detail:
+        production_status:
+          cannot: "制作不可"
+          waiting: "制作準備中"
+          maiking: "制作中"
+          completed: "制作完了"

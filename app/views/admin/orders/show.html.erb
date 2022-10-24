@@ -1,0 +1,73 @@
+<div class="container">
+  <div class="row">
+
+      <h2>注文履歴詳細</h2>
+
+          <caption>注文情報</caption>
+           <table>
+            <tr>
+            <td>購入者</td>
+            <td><%= Customer.find(@order.customer_id).customer_name %></td>
+           </tr>
+           <tr>
+            <td>注文日</td>
+            <td><%= @order.created_at %></td>
+           </tr>
+           <tr>
+            <td>配送先</td>
+            <td><%= @order.address %></td>
+           </tr>
+           <tr>
+            <td>支払方法</td>
+            <td><%= @order.pay_way_i18n %></td>
+           </tr>
+           <tr>
+            <td>ステータス</td>
+              <%= form_with model: [:admin, @order] do |f| %>
+                <td>
+                  <%= f.select :status, Order.statuses.keys.map {|k| [I18n.t("enums.order.status.#{k}"),k] } %>
+                  <%= f.submit '更新'%>
+                </td>
+              <% end %>
+           </tr>
+           </table>
+
+           <table class='table table-hover table-inverse'>
+        <thead>
+          <tr>
+            <th></th>
+            <th>商品名</th>
+            <th>単価（税込）</th>
+            <th>数量</th>
+            <th>小計</th>
+            <th>制作ステータス</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @order.order_details.each do |f| %>
+            <tr>
+              <td><%= Product.find(f.product_id).name %></td>
+              <td><%= f.product_price %></td>
+              <td><%= f.amount %></td>
+              <td><%= f.amount*f.product_price %></td>
+              <%= form_with model: [:admin, f] do |form| %>
+                <td>
+                  <%= form.select :production_status, OrderDetail.production_statuses.keys.map{|k| [I18n.t("enums.order_detail.production_status.#{k}"),k]} %>
+                  <%= form.submit '更新'%>
+                </td>
+              <% end %>
+          <% end %>
+        </tbody>
+      </table>
+      <div>商品合計</div>
+      <%= @order.total_price %>
+      <div>送料</div>
+      <%= @order.postage %>
+      <div>請求金額合計</div>
+      <%= @order.total_price + @order.postage %>
+
+
+
+ </div>
+</div>

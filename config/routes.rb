@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
  scope module: :public do
     get 'orders/thanks' => "orders#thanx"
+    post 'orders/log'
     resources :products, only: [:index, :show]
     resources :customers, only: [:show, :edit, :update, :quite, :out, :create]
     resources :cart_products, only: [:index, :update, :destroy, :all_destroy, :create]
@@ -33,7 +34,7 @@ Rails.application.routes.draw do
     resources :products, only: [:index, :new, :create, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
-    resources :orders, only: [:index, :show]
+    resources :orders, only: [:index, :show, :update]
     resources :order_details, only: [:update]
   end
 
