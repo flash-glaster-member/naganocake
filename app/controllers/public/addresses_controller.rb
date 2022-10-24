@@ -1,9 +1,8 @@
 class Public::AddressesController < ApplicationController
-  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
   def index
     @customer = current_customer
-    @addresses = @customer.addresses
+    @addresses = Address.all
     @address = Address.new
   end
 
@@ -13,34 +12,34 @@ class Public::AddressesController < ApplicationController
   end
 
   def create
-    @address = Address.new(address_params)
+    @address = Address.new
     @address.customer_id = current_customer.id
     if @address.save
       redirect_to addresses_path(@address), notice: "配送先が新たに登録されました"
     else
-      @customer = current_customer
-      @addresses = @customer.addresses
-      render "public/addresses/index"
+     redirect_to addresses_path(current_customer)
+     @addresses = Address.all
     end
   end
 
   def update
     if @address.update(address_params)
-      redirect_to addresses_path(@address), notice: "配送先の編集が完了しました"
+      redirect_to addresses_path(current_customer), notice: "配送先の編集が完了しました"
     else
       render "addresses/edit"
     end
   end
 
   def destroy
-    @customer.destroy
-    redirect_to address_index_path
+    @address.destroy
+    flash[:notice] = "配送先の削除を実行いたしました"
+    redirect_to address_path
   end
 
   private
 
   def address_params
-    params.require(:address).permit(:post_code, :address, :phone_number)
+    params.require(:address).permit(:post_code, :send_address, :send_name)
   end
 
 end
