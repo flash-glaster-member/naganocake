@@ -16,3 +16,7 @@
           waiting: "制作準備中"
           maiking: "制作中"
           completed: "制作完了"
+    time:
+      formats:
+        default: "%Y/%m/%d %H:%M:%S"
+        short: "%m/%d %H:%M"
