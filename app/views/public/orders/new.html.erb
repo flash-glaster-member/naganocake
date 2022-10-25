@@ -18,7 +18,7 @@
       <div class="row">
       <h4>お届け先</h4>
       </div>
-        <div class="col-3 "> 
+        <div class="col-3 ">
         <%= form.hidden_field :customer_id, :value => current_customer.id %>
         <!--登録済住所-->
         <%= form.radio_button :address_number, 0, checked: true %>
@@ -53,6 +53,6 @@
       <div class="field row">
         <div class="col-5"></div>
         <%= form.submit "確認画面へ進む", class: 'btn btn-info'%>
-      </div>
         <% end %>
+      </div>
 </div>
