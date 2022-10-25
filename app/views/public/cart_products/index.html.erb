@@ -13,24 +13,37 @@
           </tr>
         </thead>
         <tbody>
-          <% @cart_products.each do |cart_product| %>
-          <% product_id = cart_product.product_id %>
+        <% total = 0 %>
+          <% @cart_products.each do |f| %>
+            <% product = Product.find(f.product_id) %>
+            <% customer = Customer.find(f.customer_id)%>
             <tr>
-              <td><%= image_tag Product.find([:product_id]).get_product_image, size:'50x50' %></td>
-              <td><%= cart_product.product_name %></td>
-              <td><%= cart_product.product_price %></td>
-              <td>
-                <%= f.select :amount, [["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"], ["7", "7"], ["8", "8"], ["9", "9"], ["10", "10"]], cart.volume %>
-                <%= f.submit '変更'%>
-              </td>
-              <td><%= subtotal %></td>
-              <!--削除ボタン-->
+              <td><%= image_tag product.get_product_image, size:'50x50' %></td>
+              <td><%= product.name %></td>
+              <td><%= product.price %></td>
+              <%= form_with model: f do |form| %>
+                <%= form.hidden_field :product_id, :value => product.id %>
+                <%= form.hidden_field :customer_id, :value => customer.id %>
+
+                <td>
+                  <%= form.select :amount, *[1..10], {selected: f.amount} %>
+                  <%= form.submit '変更'%>
+                </td>
+              <% end %>
+              <td><%= f.subtotal %></td>
+              <% total += f.subtotal%>
+              <td><%= link_to "削除", cart_product_path(f.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %></td>
             </tr>
           <% end %>
         </tbody>
       </table>
+      <%= total  %>
 
       <%=  link_to products_path,class: 'nav-link text-light btn-info' do %>
         <button>買い物を続ける</button>
+      <% end %>
+
+      <%=  link_to new_order_path,class: 'nav-link text-light btn-info' do %>
+        <button>情報入力へ進む</button>
       <% end %>
  </div>

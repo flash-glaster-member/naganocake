@@ -60,3 +60,4 @@ gem 'jquery-rails'
 gem "enum_help"
 gem "pry-rails"
 gem 'kaminari','~>1.2.1'
+gem 'pry-byebug', group: :development
