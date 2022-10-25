@@ -4,30 +4,42 @@
       <table class='table table-hover table-inverse'>
         <thead>
           <tr>
-            <th></th>
             <th>商品名</th>
             <th>単価（税込）</th>
             <th>数量</th>
             <th>小計</th>
-            <th></th>
           </tr>
         </thead>
         <tbody>
-          <% @cart_products.each do |cart_product| %>
+          <% @cart_products.each do |cart| %>
+          <% product = Product.find(cart.product_id) %>
             <tr>
-              <td><%= image_tag cart_product.product.get_product_image, size:'50x50' %>
-              <%= product.name %></td>
+              <td><%= image_tag product.get_product_image, size:'50x50' %>
+                  <%= product.name %></td>
               <td><%= product.price %></td>
-              <td><%= product.amount %></td>
-              <td><%= subtotal %></td>
+              <td><%= cart.amount %></td>
+              <td><%= cart.subtotal %></td>
               <!--削除ボタン-->
             </tr>
           <% end %>
         </tbody>
       </table>
+      <td><%= @total %></td>
 
-      <h3>支払い方法</h3><%= order.pay_way%>
 
-      <h3>お届け先</h3><%= order.address_display%>
+      <h3>支払い方法</h3><%= @order.pay_way %>
+
+      <h3>お届け先</h3><%= @order.address_display %>
+
+      <%= form_with model: @order, local: true do |f| %>
+        <%= f.hidden_field :post_code %>
+        <%= f.hidden_field :name %>
+        <%= f.hidden_field :address %>
+        <%= f.hidden_field :pay_way %>
+        <%= f.hidden_field :total_price, value: @total %>
+        <%= f.hidden_field :status, value: 'waiting' %>
+        <%= f.hidden_field :postage, value: 800 %>
+        <%= f.submit "注文を確定する" %>
+      <% end %>
 
 </div>
