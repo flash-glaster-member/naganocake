@@ -16,7 +16,8 @@ Rails.application.routes.draw do
 
  scope module: :public do
     get 'orders/thanks' => "orders#thanx"
-
+    # 退会確認画面
+    get "/customers/quite" => 'customers#quite', as: 'quite'
 
 
     resources :products, only: [:index, :show]
@@ -25,8 +26,7 @@ Rails.application.routes.draw do
     resources :orders, only: [:new, :log, :thanx, :create, :index, :show]
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
 
-   # 退会確認画面
-    get "/customers/quite" => 'customers#quite', as: 'quite'
+
     # 論理削除用のルーティング
     patch "/customers/out" => 'customers#out', as: 'out'
   end

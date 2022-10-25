@@ -2,7 +2,7 @@ class Public::AddressesController < ApplicationController
 
   def index
     @customer = current_customer
-    @addresses = Address.all
+    @addresses = @customer.addresses
     @address = Address.new
   end
 
@@ -14,7 +14,7 @@ class Public::AddressesController < ApplicationController
   def create
     @address = Address.new
     @address.customer_id = current_customer.id
-    if @address.save
+    if @address.save(address_params)
       redirect_to addresses_path(@address), notice: "配送先が新たに登録されました"
     else
      redirect_to addresses_path(current_customer)

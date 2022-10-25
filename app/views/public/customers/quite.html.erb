@@ -1,15 +1,23 @@
-<h2>本当に退会しますか？</h2>
- <p>
-   退会すると、会員情報登録や<br>
-   これまでの購入履歴が閲覧できなくなります。<br>
-   退会する場合は、「退会する」をクリックしてください。<br>
- </p>
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+    </div>
+       <h6 class="d-flex  mb-5 p-2 text-black bg-opacity-10" >本当に退会しますか？</h6><br>
+  </div>
+  <div class="row">
+    <div class="col-3">
+    </div>
+       <p style="text-align:center">
+         退会すると、会員情報登録や<br>
+         これまでの購入履歴が閲覧できなくなります。<br>
+         退会する場合は、「退会する」をクリックしてください。<br>
+       </p>
+  </div>
 
    <div class="field row mb-4">
       <div class="col-2"></div>
         <%= link_to "退会する", out_path, method: :patch, data: { confilm: "本当に退会しますか？" } ,class: "col-2 btn btn-sm btn-success" %>
-   </div>
-   <div class="field row mb-4">
       <div class="col-2"></div>
         <%= link_to "退会しない", customer_path(current_customer),class: "col-2 btn btn-sm btn-success" %>
    </div>
+</div>
