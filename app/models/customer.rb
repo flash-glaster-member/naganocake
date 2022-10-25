@@ -11,7 +11,7 @@ class Customer < ApplicationRecord
          validates :postcode, presence: true
          validates :address, presence: true
          validates :email, presence: true
-         validates :password, presence: true
+         validates :password, length: { minimum: 5}
 
 
   has_many :cart_products, dependent: :destroy

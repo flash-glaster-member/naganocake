@@ -1,6 +1,13 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 
+.images{
+  display: flex;
+  flex-wrap: wrap
+}
+.get_product_image{
+  width: 22%
+}
+
 .pagination{
   justify-content: center;
-}
