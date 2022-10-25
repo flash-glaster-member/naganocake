@@ -7,5 +7,9 @@ class Product < ApplicationRecord
   def get_product_image
     (product_image.attached?) ? product_image : "sample.png"
   end
+  
+  def add_tax_price
+    (self.price*1.10).round
+  end
 
 end

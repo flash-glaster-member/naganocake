@@ -1,21 +1,29 @@
-<h2>商品詳細</h2>
-<%= image_tag @product.get_product_image, size:'aout'%>
-
-    <div>商品名<%= @product.name %></vif>
-    <div>商品説明<%= @product.description %></div>
-    <div>税込価格<%= @product.price %>円</div>
-    <div>
-      ジャンル
-      <%= @genres.find(@product.genre_id).name %>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-5">
+          <h2>商品詳細</h2>
+          <%= image_tag @product.get_product_image, size:'200x200'%>
+        </div>
+        <div class="col-lg-7">
+          <div>商品名<%= @product.name %></div>
+          <div>商品説明<%= @product.description %></div>
+          <div>
+            ジャンル
+            <%= @genres.find(@product.genre_id).name %>
+          </div>
+          <div>税込価格(税抜価格)<%= @product.add_tax_price %>(<%= @product.price %>)円</div>
+          <div>販売ステータス
+          <% if @product.is_active? %>
+          <div class='text-success font-weight-bold'>販売中</div>
+          <% else %>
+          <div>販売停止中</div>
+          <% end %>
+          </div>
+          <%=  link_to "編集する", edit_admin_product_path(@product.id), class: 'btn btn-lg btn-success' %>
+          <!--<button type="button" class="btn btn-success">編集</button>-->
+        </div>
+      </div>
     </div>
-    <div>
-      <% if @product.is_active? %>
-        <div>販売中</div>
-      <% else %>
-        <div>販売停止中</div>
-      <% end %>
-    </div>
 
-<%=  link_to edit_admin_product_path(@product.id),class: 'nav-link text-light' do %>
-  <button type="button" class="btn btn-light">編集</button>
-<% end %>
+
+

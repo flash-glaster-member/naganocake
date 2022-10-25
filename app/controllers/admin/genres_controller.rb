@@ -18,7 +18,7 @@ class Admin::GenresController < ApplicationController
   def update
     @genre = Genre.find(params[:id])
    if @genre.update(genre_params)
-      redirect_to genres_path(@genre.id), notice: 'genre was successfully created.'
+      redirect_to admin_genres_path, notice: 'genre was successfully created.'
    else
       render :edit
    end

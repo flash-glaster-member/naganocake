@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 
-  before_action :authenticate_any!, except: [:top, :about,:index]
+  # before_action :authenticate_any!, except: [:top, :about,:index]
 
 
 

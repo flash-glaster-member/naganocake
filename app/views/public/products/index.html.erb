@@ -1,10 +1,17 @@
-<h2>商品一覧</h2>
+<div class="container">
+  <h2>商品一覧</h2>
+    <p>(全<%= @products.count %>件)</p>
+  <div class="row">
 
+      <% @products.each do |product| %>
+      <div class="col-lg-2 mx-4 mb-5 d-flex flex-wrap">
+        <%=  link_to product_path(product.id), class: 'row' do %>
+          <%= image_tag product.get_product_image, size:'180x100'%>
+          <%= product.name %>
+        <% end %>
+        <a class="row">¥<%= product.add_tax_price %></a>
+      </div>
+      <% end %>
 
-<% @products.each do |product| %>
-  <%=  link_to product_path(product.id),class: 'nav-link' do %>
-    <%= image_tag product.get_product_image, size:'100x100'%>
-    <%= product.name %>
-  <% end %>
-  <%= product.price %>
-<% end %>
+  </div>
+</div>

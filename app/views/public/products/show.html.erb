@@ -1,9 +1,9 @@
 <h2>商品詳細</h2>
-<%= image_tag @product.get_product_image, size:'aout'%>
+<%= image_tag @product.get_product_image, size:'400x300'%>
 
     <div>商品名<%= @product.name %></div>
     <div>商品説明<%= @product.description %></div>
-    <div>税込価格<%= @product.price %>税込み</div>
+    <div>税込価格¥<%= @product.add_tax_price %>(税込)</div>
     <%= form_with model: @cart_product, url:cart_products_path do |amount , product_id| %>
       <div class="form-group">
         <% product_id = @product.id%>
