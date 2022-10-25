@@ -23,7 +23,7 @@ class Public::CustomersController < ApplicationController
   end
 
   def out
-    @customer = current_customer
+    @customer = Customer.find(current_customer.id)
     @customer.update(is_deleted: true)
     reset_session
     flash[:notice] = "退会処理を実行いたしました"
@@ -33,7 +33,7 @@ class Public::CustomersController < ApplicationController
   private
 
   def customer_params
-    params.require(:customer).permit(:lastname, :firstname, :kana_last_name, :kana_first_name, :postcode, :address, :email, :phone_number )
+    params.require(:customer).permit(:lastname, :firstname, :kana_last_name, :kana_first_name, :postcode, :address, :email, :phone_number, :is_deleted)
   end
 
 end

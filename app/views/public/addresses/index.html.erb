@@ -26,6 +26,7 @@
           <%= f.label :住所,class: "col-3"%>
           <%= f.text_field :send_address, class: "col-7" %>
         </div>
+        <%= f.hidden_field :customer_id, value: current_customer.id %>
         <div class="field row mb-2">
           <%= f.label :宛先,class: "col-3"%>
           <%= f.text_field :send_name, class: "col-3" %>
@@ -35,13 +36,13 @@
         <% end %>
 
 
-     <table border="1" width="50%" height="200" class="table table-hover table-inverse">
+     <table border="1" class="table table-hover table-inverse table-sm">
       <thead>
        <tr>
-        <th bgcolor="#cococo" width="10%">郵便番号</th>
-        <th bgcolor="#cococo" width="30%">住所</th>
-        <th bgcolor="#cococo" width="10%">宛先</th>
-        <th bgcolor="#cococo" width="20%"></th>
+        <th bgcolor="#cococo" >郵便番号</th>
+        <th bgcolor="#cococo" >住所</th>
+        <th bgcolor="#cococo" >宛先</th>
+        <th bgcolor="#cococo" ></th>
        </tr>
       </thead>
       <tbody>
@@ -50,8 +51,12 @@
            <td><%= address.post_code %></td>
            <td><%= address.send_address %></td>
            <td><%= address.send_name %></td>
-           <td><%= link_to "編集する", edit_address_path(current_customer), class: "col-4 btn btn-default" %>
-               <%= link_to "削除する", method: :delete, data: { confilm: "本当に削除しますか？" } ,class: "col-4 btn btn-sm btn-success" %>
+           <td><%= link_to  edit_address_path(current_customer) do %>
+                 <button class="btn btn-sm btn-defalt">編集する</button>
+               <% end %><br>
+               <%= link_to address_path(address.id), method: :delete, data: { confilm: "本当に削除しますか？" } do %>
+                <button class="btn btn-sm btn-success">削除する</button>
+              <% end %>
            </td>
          </tr>
         <% end %>
