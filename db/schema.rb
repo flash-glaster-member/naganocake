@@ -70,20 +70,20 @@ ActiveRecord::Schema.define(version: 2022_10_24_051039) do
   end
 
   create_table "customers", force: :cascade do |t|
+    t.string "firstname", null: false
+    t.string "lastname", null: false
+    t.string "kana_firstname", null: false
+    t.string "kana_lastname", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.integer "postcode", null: false
+    t.text "address", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "is_deleted", default: false
-    t.string "lastname", null: false
-    t.string "firstname", null: false
-    t.string "kana_last_name", null: false
-    t.string "kana_first_name", null: false
-    t.string "postcode", null: false
-    t.string "address", null: false
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
@@ -91,6 +91,7 @@ ActiveRecord::Schema.define(version: 2022_10_24_051039) do
   create_table "genres", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "genre_name"
     t.string "name"
   end
 
@@ -114,7 +115,6 @@ ActiveRecord::Schema.define(version: 2022_10_24_051039) do
     t.integer "total_price"
     t.integer "pay_way"
     t.integer "status"
-    t.integer "postage"
   end
 
   create_table "products", force: :cascade do |t|

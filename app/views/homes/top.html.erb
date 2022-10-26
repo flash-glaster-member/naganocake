@@ -39,7 +39,7 @@
            <div class="img"><%= image_tag product.get_product_image, size:'140x100'%></div>
            <%= product.name %><br>
            <% end %>
-           ¥<%= product.price %>
+           ¥<%= product.add_tax_price.to_s(:delimited) %>
          </div>
        　<% end %>
        </div>
