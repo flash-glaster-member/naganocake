@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
  scope module: :public do
     get 'orders/thanks' => "orders#thanx"
+    post 'orders/log'
     # 退会確認画面
     get "/customers/quite" => 'customers#quite', as: 'quite'
      # 論理削除用のルーティング

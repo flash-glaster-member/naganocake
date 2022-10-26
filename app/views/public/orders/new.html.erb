@@ -8,16 +8,14 @@
       <div class="row">
       <h4>支払方法</h4>
       </div>
+      <%= form_with model: @order, url: orders_log_path, local: true do |form| %>
         <div class="col-3 mb-3">
-        <%= form_with model: @order, url: orders_log_path(@order.id), local: true do |form| %>
         <%= form.radio_button :pay_way, :credit_card, checked: true %>
         <%= form.label :pay_way, "クレジットカード" %><br />
         <%= form.radio_button :pay_way, :transfer %>
         <%= form.label :pay_way, "銀行振込" %>
         </div>
-      <div class="row">
-      <h4>お届け先</h4>
-      </div>
+        <h4>お届け先</h4>
         <div class="col-3 ">
         <%= form.hidden_field :customer_id, :value => current_customer.id %>
         <!--登録済住所-->
@@ -53,6 +51,6 @@
       <div class="field row">
         <div class="col-5"></div>
         <%= form.submit "確認画面へ進む", class: 'btn btn-info'%>
-        <% end %>
       </div>
+    <% end %>
 </div>
