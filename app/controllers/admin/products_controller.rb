@@ -11,7 +11,6 @@ class Admin::ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    # @prudubt.admin_id = current_admin.id
     if @product.save!
       redirect_to admin_products_path
     else
