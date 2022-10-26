@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-
-   get 'homes/about', as: "about"
+  root :to =>"homes#top"
+  get 'homes/about', as: "about"
 
 
  # 顧客用
@@ -13,34 +13,20 @@ Rails.application.routes.draw do
    sessions: "admin/sessions"
  }
 
-
- # 管理者用
- devise_for :admin, skip: [:registrations, :passwords], controllers: {
-   sessions: "admin/sessions"
- }
-
  scope module: :public do
     get 'orders/thanks' => "orders#thanx"
     post 'orders/log'
-    resources :products, only: [:index, :show]
-    resources :customers, only: [:show, :edit, :update, :quite, :out, :create]
-    resources :cart_products, only: [:index, :update, :destroy, :all_destroy, :create]
-    resources :orders, only: [:new, :log, :thanx, :create, :index, :show]
-    resources :addresses, only: [:index, :edit, :create, :update, :destroy]
-
-    # 退会確認画面
+     # 退会確認画面
     get "/customers/quite" => 'customers#quite', as: 'quite'
     # 論理削除用のルーティング
     patch "/customers/out" => 'customers#out', as: 'out'
 
+    resources :products, only: [:index, :show]
+    resources :customers, only: [:show, :edit, :update,:create]
+    resources :cart_products, only: [:index, :update, :destroy, :all_destroy, :create]
+    resources :orders, only: [:new, :log, :thanx, :create, :index, :show]
+    resources :addresses, only: [:index, :edit, :create, :update, :destroy]
   end
-
-<<<<<<< HEAD
-
-
-
-=======
->>>>>>> origin/develop
   namespace :admin do
     root :to => "homes#top"
     resources :products, only: [:index, :new, :create, :show, :edit, :update]
