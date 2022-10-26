@@ -8,7 +8,7 @@ class Customer < ApplicationRecord
          validates :lastname, presence: true
          validates :kana_first_name, presence: true
          validates :kana_last_name, presence: true
-         validates :postcode, length: { is: 7 }  
+         validates :postcode, length: { is: 7 }
          validates :address, presence: true
          validates :email, presence: true
          validates :password, length: { minimum: 5}
