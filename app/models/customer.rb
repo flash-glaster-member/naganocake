@@ -8,10 +8,10 @@ class Customer < ApplicationRecord
          validates :lastname, presence: true
          validates :kana_first_name, presence: true
          validates :kana_last_name, presence: true
-         validates :postcode, presence: true
+         validates :postcode, length: { is: 7 }
          validates :address, presence: true
          validates :email, presence: true
-         validates :encrypted_password, presence: true
+         validates :password, length: { minimum: 5}
 
 
   has_many :cart_products, dependent: :destroy
@@ -23,6 +23,10 @@ class Customer < ApplicationRecord
   end
 
   def customer_name
-    firstname + lastname
+    lastname + firstname
+  end
+
+  def address_display
+    '〒' + postcode + ' ' + address + ' ' + firstname + lastname
   end
 end

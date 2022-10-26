@@ -1,6 +1,10 @@
 <!--カート内商品表示-->
-<div class='container px-5 px-sm-0'>
-      <h2>ショッピングカート</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-2">
+    </div>
+      <h5 class="d-flex justify-content-left mb-3 bg-secondary p-2 text-black">ショッピングカート</h5>
+  </div>
       <table class='table table-hover table-inverse'>
         <thead>
           <tr>
@@ -13,23 +17,49 @@
           </tr>
         </thead>
         <tbody>
-          <% @cart_products.each do |cart_product| %>
+        <% total = 0 %>
+          <% @cart_products.each do |f| %>
+            <% product = Product.find(f.product_id) %>
+            <% customer = Customer.find(f.customer_id)%>
             <tr>
-              <td><%= image_tag cart_product.product.get_product_image, size:'50x50' %></td>
+              <td><%= image_tag product.get_product_image, size:'50x50' %></td>
               <td><%= product.name %></td>
               <td><%= product.price %></td>
+              <%= form_with model: f do |form| %>
+                <%= form.hidden_field :product_id, :value => product.id %>
+                <%= form.hidden_field :customer_id, :value => customer.id %>
+                <td>
+                  <%= form.select :amount, *[1..1000], {selected: f.amount},class: "btn btn-sm btn-light"%>
+                  <%= form.submit '変更',class: "btn btn-sm btn-success"%>
+                </td>
+              <% end %>
+              <td><%= f.subtotal %></td>
+              <% total += f.subtotal%>
               <td>
-                <%= f.select :amount, [["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"], ["7", "7"], ["8", "8"], ["9", "9"], ["10", "10"]], cart.volume %>
-                <%= f.submit '変更'%>
+                <%= link_to cart_product_path(f.id), method: :delete, data: { confirm: '本当に消しますか？' } do %>
+                  <button class = "btn btn-sm btn-danger">削除</button>
+                <% end %>
               </td>
-              <td><%= subtotal %></td>
-              <!--削除ボタン-->
             </tr>
           <% end %>
         </tbody>
       </table>
-
-      <%=  link_to products_path,class: 'nav-link text-light btn-info' do %>
-        <button>買い物を続ける</button>
-      <% end %>
+        <div class="row mb-5">
+          <div class="col-1">
+          </div>
+            <%=  link_to products_path do %>
+            <button class= 'btn btn-primary'>買い物を続ける</button>
+            <% end %>
+          <div class="col-6">
+          </div>
+            <h6 class="col-2">合計金額</h6>
+            <%= total %>
+        </div>
+        <div class="row">
+          <div class="col-5">
+          </div>
+            <%=  link_to new_order_path do %>
+            <button class= 'btn btn-success'>情報入力へ進む</button>
+            <% end %>
+        </div>
  </div>

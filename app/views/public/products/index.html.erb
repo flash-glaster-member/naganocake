@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row">
+    <div class='col-md-3 mt-4'>
+      <table class='table'>
+       <thead>
+        <tr>
+         <th class="align-middle text-center">ジャンル検索</th>
+        </tr>
+       </thead>
+        <tbody>
+         <% @genres.each do |genre| %>
+         <tr>
+          <td><%= genre.name %></td>
+         </tr>
+         <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-lg-9 mt-4">
+       <h3 class="mb-4 text-left">商品一覧</h3><p>(全<%= @product_all.count %>件)</p>
+       <div class="images">
+         <% @products.each do |product| %>
+         <div class="get_product_image text-center mb-4">
+           <%=  link_to product_path(product.id) do %>
+           <div class="img"><%= image_tag product.get_product_image, size:'140x100'%></div>
+           <%= product.name %><br>
+           <% end %>
+           ¥<%= product.add_tax_price.to_s(:delimited) %>
+         </div>
+       　<% end %>
+       </div>
+     </div>
+<div class="col-md-7"></div>
+       <%= paginate @product %>
+
+      <!--<#% @products.each do |product| %>-->
+      <!--<div class="mx-4 mb-5 d-flex flex-wrap">-->
+      <!--  <#%=  link_to product_path(product.id), class: 'row' do %>-->
+      <!--    <#%= image_tag product.get_product_image, size:'180x100'%>-->
+      <!--    <#%= product.name %>-->
+      <!--  <#% end %>-->
+      <!--  <p class="row">¥<#%= product.add_tax_price.to_s(:delimited) %></p>-->
+      <!--</div>-->
+      <!--<#% end %>-->
+
+  </div>
+</div>

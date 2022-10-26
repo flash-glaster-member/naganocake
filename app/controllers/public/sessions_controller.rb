@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 class Public::SessionsController < Devise::SessionsController
-  # before_action :customer_state, only: [:create]
+  before_action :authenticate_customer!
+  before_action :customer_state, only: [:create]
 
 
   # GET /resource/sign_in
@@ -22,8 +23,8 @@ class Public::SessionsController < Devise::SessionsController
   protected
 
    def after_sign_in_path_for(resource)
-        # admin_order_details_path(resource)
-        root_path
+        customer_path(resource)
+
    end
 
    def after_sign_out_path_for(resource)
@@ -31,14 +32,13 @@ class Public::SessionsController < Devise::SessionsController
    end
 
    def customer_state
-    @customer = Customer.find_by(email: params[:customer][:email])
-     if @customer
-      if @customer.valid_password?(params[:customer][:password])&& (@user.is_deleted == false)
-        flash[:notice] = "退会済みです。再度ご登録をしてご利用ください。"
-        redirect_to customers_show
-      else
-        flash[:notice] = "項目を入力してください"
-      end
+    @customer = Customer.find_by(email: params[:email])
+    return if !@customer
+     if @customer.valid_password?(params[:password])&& (@customer.is_deleted == true)
+       flash[:notice] = "退会済みです。再度ご登録をしてご利用ください。"
+       redirect_to "/"
+     else
+       flash[:notice] = "項目を入力してください"
      end
    end
 end

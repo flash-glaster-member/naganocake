@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  root :to =>"homes#top"
-   get 'homes/about', as:"about"
-   get 'public/ptoducts/index' => 'products#index' , as: 'products'
+  root to:'homes/top'
+   get 'homes/about', as: "about"
+
 
  # 顧客用
  devise_for :customers, skip: [:passwords], controllers: {
@@ -12,7 +12,6 @@ Rails.application.routes.draw do
  devise_for :admin, skip: [:registrations, :passwords], controllers: {
    sessions: "admin/sessions"
  }
-
 
  scope module: :public do
     get 'orders/thanks' => "orders#thanx"
@@ -29,10 +28,7 @@ Rails.application.routes.draw do
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
 
 
-
   end
-
-
 
 
   namespace :admin do
@@ -40,10 +36,9 @@ Rails.application.routes.draw do
     resources :products, only: [:index, :new, :create, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
-    resources :orders, only: [:index, :show]
+    resources :orders, only: [:index, :show, :update]
     resources :order_details, only: [:update]
   end
 
 
 end
-

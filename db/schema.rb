@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2022_10_25_085107) do
+=======
+ActiveRecord::Schema.define(version: 2022_10_24_051039) do
+>>>>>>> origin/develop
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -46,7 +50,7 @@ ActiveRecord::Schema.define(version: 2022_10_25_085107) do
     t.integer "customer_id"
     t.string "send_name"
     t.text "send_address"
-    t.integer "post_code"
+    t.string "post_code"
   end
 
   create_table "admins", force: :cascade do |t|
@@ -70,8 +74,14 @@ ActiveRecord::Schema.define(version: 2022_10_25_085107) do
   end
 
   create_table "customers", force: :cascade do |t|
+    t.string "firstname", null: false
+    t.string "lastname", null: false
+    t.string "kana_firstname", null: false
+    t.string "kana_lastname", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.integer "postcode", null: false
+    t.text "address", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -92,6 +102,7 @@ ActiveRecord::Schema.define(version: 2022_10_25_085107) do
   create_table "genres", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "genre_name"
     t.string "name"
   end
 
@@ -109,13 +120,12 @@ ActiveRecord::Schema.define(version: 2022_10_25_085107) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "customer_id"
-    t.integer "post_code"
+    t.string "post_code"
     t.text "address"
     t.string "name"
     t.integer "total_price"
     t.integer "pay_way"
     t.integer "status"
-    t.integer "postage"
   end
 
   create_table "products", force: :cascade do |t|
