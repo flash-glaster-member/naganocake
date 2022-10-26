@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+   root :to =>"homes#top"
    get 'homes/about', as: "about"
 
 
@@ -8,11 +8,6 @@ Rails.application.routes.draw do
    registrations: "public/registrations",
    sessions: 'public/sessions'
  }
-  # 管理者用
- devise_for :admin, skip: [:registrations, :passwords], controllers: {
-   sessions: "admin/sessions"
- }
-
 
  # 管理者用
  devise_for :admin, skip: [:registrations, :passwords], controllers: {
@@ -20,6 +15,11 @@ Rails.application.routes.draw do
  }
 
  scope module: :public do
+    # 退会確認画面
+    get "/customers/quite" => 'customers#quite', as: 'quite'
+    # 論理削除用のルーティング
+    patch "/customers/out" => 'customers#out', as: 'out'
+
     get 'orders/thanks' => "orders#thanx"
     post 'orders/log'
     resources :products, only: [:index, :show]
@@ -28,19 +28,8 @@ Rails.application.routes.draw do
     resources :orders, only: [:new, :log, :thanx, :create, :index, :show]
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
 
-    # 退会確認画面
-    get "/customers/quite" => 'customers#quite', as: 'quite'
-    # 論理削除用のルーティング
-    patch "/customers/out" => 'customers#out', as: 'out'
-
   end
 
-<<<<<<< HEAD
-
-
-
-=======
->>>>>>> origin/develop
   namespace :admin do
     root :to => "homes#top"
     resources :products, only: [:index, :new, :create, :show, :edit, :update]
