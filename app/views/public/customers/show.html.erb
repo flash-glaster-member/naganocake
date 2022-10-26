@@ -5,7 +5,6 @@
        <h6 class="d-flex justify-content-left mb-5 bg-secondary p-2 text-black bg-opacity-10">マイページ</h6>
   </div>
 
-
        <%= form_with model: @customer do |f| %>
        <div class="form-group" font-weight="bold">
         <%= f.label "登録情報" %>
@@ -13,7 +12,7 @@
         <%= link_to "編集する", edit_customer_path, class: "col-1 btn btn-sm btn-success" %>
        </div>
 
-          <table border="1" width="50%" height="200">
+          <table border="1">
             <tr>
               <td bgcolor="#cococo" width="20%">氏名</td>
               <td width="60%"><%= @customer.lastname %><%= @customer.firstname %></td>
@@ -56,4 +55,5 @@
            <% end %>
           </div>
 </div>
+
 

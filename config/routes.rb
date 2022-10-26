@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-   root to:'homes/top'
+   root :to =>"homes#top"
    get 'homes/about', as: "about"
+
 
 
  # 顧客用
@@ -8,6 +9,7 @@ Rails.application.routes.draw do
    registrations: "public/registrations",
    sessions: 'public/sessions'
  }
+
   # 管理者用
  devise_for :admin, skip: [:registrations, :passwords], controllers: {
    sessions: "admin/sessions"
@@ -27,9 +29,7 @@ Rails.application.routes.draw do
     resources :orders, only: [:new, :log, :thanx, :create, :index, :show]
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
 
-
   end
-
 
   namespace :admin do
     root :to => "homes#top"

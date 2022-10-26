@@ -8,7 +8,7 @@ class Product < ApplicationRecord
   validates :description, presence: true
   # validates :genre_id, presence: true
   validates :price, presence: true
-  validates :is_active, presence: true
+  # validates :is_active, presence: true
 
   paginates_per 8
 
