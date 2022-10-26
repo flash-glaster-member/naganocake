@@ -1,12 +1,18 @@
 Rails.application.routes.draw do
-  root :to =>"homes#top"
+
    get 'homes/about', as: "about"
+
 
  # 顧客用
  devise_for :customers, skip: [:passwords], controllers: {
    registrations: "public/registrations",
    sessions: 'public/sessions'
  }
+  # 管理者用
+ devise_for :admin, skip: [:registrations, :passwords], controllers: {
+   sessions: "admin/sessions"
+ }
+
 
  # 管理者用
  devise_for :admin, skip: [:registrations, :passwords], controllers: {
@@ -29,6 +35,12 @@ Rails.application.routes.draw do
 
   end
 
+<<<<<<< HEAD
+
+
+
+=======
+>>>>>>> origin/develop
   namespace :admin do
     root :to => "homes#top"
     resources :products, only: [:index, :new, :create, :show, :edit, :update]
