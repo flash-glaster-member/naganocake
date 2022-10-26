@@ -38,12 +38,12 @@ class Public::CartProductsController < ApplicationController
          @cart_product.delete
        end
       end
-   @cart_product.save
-    #   redirect_to products_path
-    # else
-    #   redirect_to product_path(@cart_product.product_id)
-    # end
-    redirect_to cart_products_path,notice:"カートに商品が入りました"
+    @cart_product.save
+      redirect_to products_path,notice:"カートに商品が入りました"
+  # else
+  #     redirect_to product_path(@cart_product.product_id)
+  # end
+    # redirect_to cart_products_path,notice:"カートに商品が入りました"
   end
 
   private
