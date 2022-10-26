@@ -3,6 +3,14 @@ class Order < ApplicationRecord
   has_many :order_details
   belongs_to :customer
 
+  validates :post_code, length: { is: 7 }
+  validates :address, presence: true
+  validates :name, presence: true
+  validates :total_price, presence: true
+  validates :pay_way, presence: true
+
+
+
   enum pay_way: {credit_card: 0, transfer: 1}
   enum status: {waiting: 0, confirm: 1, construction: 2, preparing: 3, sent: 4 }
   #{0: 入金待ち, 1:入金確認, 2: 製作中, 3: 発送準備中, 4: 発送済み}

@@ -2,12 +2,12 @@
 <div class="container">
 
  <div class="row">
-  <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-    <h2>注文履歴一覧</h2></h2>
-     <table class="table table-hover table-inverse">
+  <div class="col-12 px-5 px-sm-0 mx-auto">
+    <h4 class = "col-md-3 offset-md-1 bg-light">注文履歴一覧</h2>
+     <table class="table table-hover table-inverse table-sm table-bordered">
 
       <thead>
-       <tr>
+       <tr class=" table-secondary ">
         <th>注文日</th>
         <th>配送先</th>
         <th>注文商品</th>
@@ -19,18 +19,21 @@
       <tbody>
         <% @orders.each do |order| %>
          <tr>
-           <td><%= order.created_at %></td>
-           <td><%= order.address %></td>
+           <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
+           <td>
+             <%= "〒" + order.post_code%><br>
+             <%= order.address %>
+           </td>
            <td>
              <% order.order_details.each do |item|%>
-               <%= Product.find(item.product_id).name %>
+               <%= Product.find(item.product_id).name %><br/>
              <% end %>
            </td>
-           <td><%= order.total_price %></td>
-           <td><%= order.status %></td>
+           <td><%= order.total_price.to_s(:delimited) %>円</td>
+           <td><%= order.status_i18n %></td>
            <td>
              <%= link_to order_path(order),class: 'nav-link text-light' do %>
-                 <button type="button" class="btn btn-light">表示する</button>
+                 <button type="button" class="btn btn-info btn-sm">表示する</button>
              <% end %>
            </td>
          </tr>
