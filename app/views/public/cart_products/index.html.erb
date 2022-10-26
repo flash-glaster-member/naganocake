@@ -1,6 +1,10 @@
 <!--カート内商品表示-->
-<div class='container px-5 px-sm-0'>
-      <h2>ショッピングカート</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-2">
+    </div>
+      <h5 class="d-flex justify-content-left mb-3 bg-secondary p-2 text-black">ショッピングカート</h5>
+  </div>
       <table class='table table-hover table-inverse'>
         <thead>
           <tr>
@@ -24,10 +28,9 @@
               <%= form_with model: f do |form| %>
                 <%= form.hidden_field :product_id, :value => product.id %>
                 <%= form.hidden_field :customer_id, :value => customer.id %>
-
                 <td>
-                  <%= form.select :amount, *[1..10], {selected: f.amount} %>
-                  <%= form.submit '変更'%>
+                  <%= form.select :amount, *[1..1000], {selected: f.amount},class: "btn btn-sm btn-light"%>
+                  <%= form.submit '変更',class: "btn btn-sm btn-success"%>
                 </td>
               <% end %>
               <td><%= f.subtotal %></td>
@@ -41,13 +44,22 @@
           <% end %>
         </tbody>
       </table>
-      <%= total  %>
-
-      <%=  link_to products_path,class: 'nav-link text-light btn-info' do %>
-        <button>買い物を続ける</button>
-      <% end %>
-
-      <%=  link_to new_order_path,class: 'nav-link text-light btn-info' do %>
-        <button>情報入力へ進む</button>
-      <% end %>
+        <div class="row mb-5">
+          <div class="col-1">
+          </div>
+            <%=  link_to products_path do %>
+            <button class= 'btn btn-primary'>買い物を続ける</button>
+            <% end %>
+          <div class="col-6">
+          </div>
+            <h6 class="col-2">合計金額</h6>
+            <%= total %>
+        </div>
+        <div class="row">
+          <div class="col-5">
+          </div>
+            <%=  link_to new_order_path do %>
+            <button class= 'btn btn-success'>情報入力へ進む</button>
+            <% end %>
+        </div>
  </div>
