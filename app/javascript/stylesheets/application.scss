@@ -3,11 +3,9 @@
 
 .images{
   display: flex;
-  flex-wrap: wrap
+  flex-wrap: wrap;
 }
+
 .get_product_image{
   width: 22%
 }
-
-.pagination{
-  justify-content: center;
