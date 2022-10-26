@@ -15,10 +15,12 @@ class Public::CustomersController < ApplicationController
   end
 
   def update
-    if current_customer.update(customer_params)
+    binding.pry
+    @customer = Customer.find(params:[id])
+    if @customer.update!(customer_params)
       redirect_to customer_path(current_customer), notice: "会員情報の編集が完了しました"
     else
-     redirect_to edit_customer_path(current_customer)
+      redirect_to edit_customer_path(current_customer)
     end
   end
 
