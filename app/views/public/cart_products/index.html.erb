@@ -35,7 +35,11 @@
               <% end %>
               <td><%= f.subtotal %></td>
               <% total += f.subtotal%>
-              <td><%= link_to "削除する", cart_product_path(f.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %></td>
+              <td>
+                <%= link_to cart_product_path(f.id), method: :delete, data: { confirm: '本当に消しますか？' } do %>
+                  <button class = "btn btn-sm btn-danger">削除</button>
+                <% end %>
+              </td>
             </tr>
           <% end %>
         </tbody>
