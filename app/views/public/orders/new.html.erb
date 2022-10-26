@@ -9,7 +9,7 @@
       <h4>支払方法</h4>
       </div>
         <div class="col-3 mb-3">
-        <%= form_with model: @order, url: orders_log_path, local: true do |form| %>
+        <%= form_with model: @order, url: orders_log_path(@order.id), local: true do |form| %>
         <%= form.radio_button :pay_way, :credit_card, checked: true %>
         <%= form.label :pay_way, "クレジットカード" %><br />
         <%= form.radio_button :pay_way, :transfer %>
