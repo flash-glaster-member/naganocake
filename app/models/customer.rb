@@ -11,6 +11,7 @@ class Customer < ApplicationRecord
          validates :postcode, length: { is: 7 }
          validates :address, presence: true
          validates :email, presence: true
+         validates :phone_number, presence: true
          validates :encrypted_password, length: { minimum: 5}
 
 
