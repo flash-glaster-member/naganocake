@@ -1,39 +1,36 @@
 <div class="container">
-
- <% if @customer.errors.any? %>
-   <div id="error_explanation">
-    <h2><%= @customer.errors.count %> errors prohibited this book from being saved:</h2>
-     <ul>
-      <% @customer.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-     </ul>
-   </div>
- <% end %>
-
- <div class="row">
-  <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-    <h2>配送先情報編集</h2>
-     <table class="table table-hover table-inverse">
-
-       <tbody>
-        <%= form_with model: @address do |f| %>
-        <tr>
-          <td>郵便番号(ハイフンなし)</td>
-          <td><%= f.text_field :postcode, class:'form-control postcode' %></td>
-        </tr>
-        <tr>
-          <td>住所</td>
-          <td><%= f.text_field :address, class:'form-control addresses' %></td>
-        </tr>
-        <tr>
-          <td>電話番号</td>
-          <td><%= f.text_field :phone_number, class:'form-control phonenumber' %>
-               <%= f.submit "新規登録", class:"btn btn-secondary" %></td>
-        </tr>
-        <% end %>
-      </tbody>
-
-   </table>
+  <div class="row">
+    <div class="col-1">
+    </div>
+       <h6 class="d-flex justify-content-left mb-5 bg-secondary p-2 text-black bg-opacity-10">配送先一覧/一覧</h6>
   </div>
- </div>
+
+    <% if @customer.errors.any? %>
+      <div id="error_explanation">
+       <h2><%= @customer.errors.count %> errors prohibited this book from being saved:</h2>
+        <ul>
+         <% @customer.errors.full_messages.each do |message| %>
+           <li><%= message %></li>
+         <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= form_with model: @address do |f| %>
+    　<div class="field row mb-2">
+          <%= f.label :郵便番号（ハイフンなし）,class: "col-3"%>
+          <%= f.text_field :post_code, class: "col-3" %>
+        </div>
+        <div class="field row mb-2">
+          <%= f.label :住所,class: "col-3"%>
+          <%= f.text_field :send_address, class: "col-7" %>
+        </div>
+        <div class="field row mb-2">
+          <%= f.label :宛先,class: "col-3"%>
+          <%= f.text_field :send_name, class: "col-3" %>
+        </div>
+        <div class="field row mb-4">
+          <div class="col-3"></div>
+          <%= f.submit "変更内容を保存" ,class: "col-2 btn btn-sm btn-success" %>
+        </div>
+        <% end %>

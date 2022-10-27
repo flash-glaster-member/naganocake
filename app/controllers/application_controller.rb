@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 
-  before_action :authenticate_any!, except: [:top, :about,:index]
+  before_action :authenticate_any!, except: [:top, :about, :index]
 
 
 
@@ -15,12 +15,12 @@ class ApplicationController < ActionController::Base
    end
 
    def authenticate_any!
-  if admin_signed_in?
+    if admin_signed_in?
       true
-  else
+    else
       authenticate_customer!
-  end
-end
+    end
+   end
 
    protected
 

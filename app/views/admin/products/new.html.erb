@@ -1,11 +1,14 @@
 <div class="container">
+  <%= render 'layouts/errors', obj: @product %>
+  <div class="row">
+    <h2>商品新規登録</h2>
+  </div>
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-      <h2>商品新規登録</h2>
       <%= form_with model: @product,url:admin_products_path do |f| %>
         <div class="form-group">
-        <%= f.label :product_image, "商品画像" %>
-        <%= f.file_field :product_image, sccept: "image/*" %>
+          <%= f.label :product_image, "商品画像" %>
+          <%= f.file_field :product_image, sccept: "image/*" %>
         </div>
         <div class="form-group">
           <%= f.label :name, "商品名" %>
@@ -33,7 +36,7 @@
             <%= f.radio_button :is_active, false %>販売停止中
           </label>
         </div>
-        <div class="form-group">
+        <div class="form-group text-center">
           <%= f.submit '新規登録', class: 'btn btn-success' %>
         </div>
       <% end %>

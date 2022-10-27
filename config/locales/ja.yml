@@ -20,3 +20,16 @@
       formats:
         default: "%Y/%m/%d %H:%M:%S"
         short: "%m/%d %H:%M"
+    activerecord:
+      models:
+        customer: カスタマー
+      attributes:
+          customer:
+            firstname: 姓
+            lastname: 名
+            kana_first_name: セイ
+            kana_last_name: メイ
+            email: メールアドレス
+            postcode: 郵便番号
+            address: 住所
+            phone_number: 電話番号

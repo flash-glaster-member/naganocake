@@ -1,41 +1,59 @@
 <div class="container">
   <div class="row">
-
-    <h2>マイページ</h2>
-
-    <h3>登録情報</h3>
-    <div class="form-group">
-      <%=  link_to edit_customer_path ,class: 'nav-link text-light' do %>
-        <button type="button" class="btn btn-light">編集</button>
-      <% end %>
+    <div class="col-1">
     </div>
-
-    <table>
-      <tr>
-        <td>氏名</td>
-        <td><%= @customer.lastname %><%= @customer.firstname %></td>
-      </tr>
-      <tr>
-        <td>カナ</td>
-        <td><%= @customer.kana_last_name %><%= @customer.kana_first_name %></td>
-      </tr>
-      <tr>
-        <td>郵便番号</td>
-        <td><%= @customer.postcode %></td>
-      </tr>
-      <tr>
-        <td>住所</td>
-        <td><%= @customer.address %></td>
-      </tr>
-      <tr>
-        <td>メールアドレス</td>
-        <td><%= @customer.email %></td>
-      </tr>
-    </table>
-    <h2>配送先</h2>
-
-    <h2>注文履歴</h2>
-
-
+       <h6 class="d-flex justify-content-left mb-5 bg-secondary p-2 text-black bg-opacity-10">マイページ</h6>
   </div>
+
+       <%= form_with model: @customer do |f| %>
+       <div class="form-group" font-weight="bold">
+        <%= f.label "登録情報" %>
+        <%= f.label "　" %>
+        <%= link_to "編集する", edit_customer_path, class: "col-1 btn btn-sm btn-success" %>
+       </div>
+
+          <table border="1">
+            <tr>
+              <td bgcolor="#cococo" width="20%">氏名</td>
+              <td width="60%"><%= @customer.lastname %><%= @customer.firstname %></td>
+            </tr>
+            <tr>
+              <td bgcolor="#cococo">カナ</td>
+              <td><%= @customer.kana_last_name %><%= @customer.kana_first_name %></td>
+            </tr>
+            <tr>
+              <td bgcolor="#cococo">郵便番号</td>
+              <td><%= @customer.postcode %></td>
+            </tr>
+            <tr>
+              <td bgcolor="#cococo">住所</td>
+              <td><%= @customer.address %></td>
+            </tr>
+            <tr>
+              <td bgcolor="#cococo">電話番号</td>
+              <td><%= @customer.phone_number %></td>
+            </tr>
+            <tr>
+              <td bgcolor="#cococo">メールアドレス</td>
+              <td><%= @customer.email %></td>
+            </tr>
+          </table>
+
+　　　　　<div class="field row mb-2">
+           <div class="form-group">
+            <%= f.label "配送先" %>
+            <%= f.label "　" %>
+            <%= link_to "一覧を見る", addresses_path, class: "col-9 btn btn-sm btn-success" %>
+           </div>
+          </div>
+          <div class="field row mb-2">
+           <div class="form-group">
+            <%= f.label "注文履歴" %>
+            <%= f.label "　" %>
+            <%= link_to "一覧を見る", orders_path, class: "col-9 btn btn-sm btn-success" %>
+           </div>
+           <% end %>
+          </div>
 </div>
+
+
