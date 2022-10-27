@@ -19,7 +19,7 @@
     <div class='col-md-8 offset-md-1'>
       <!--画像の上に文字表示-->
      <div class="card" style="max-width: 500px;">
-     <%= image_tag "sky.png", size: "1000x400", class: "card-img" %>
+     <%= image_tag "sky.png", size: "500x200", class: "card-img" %>
      <div class="card-img-overlay">
       <p class="text-center text-black font-weight-bold">ようこそ、ながのCAKEへ！</p>
       <p class="text-center text-black font-weight-bold">このサイトは、ケーキ販売のECサイトになります。</p>
@@ -35,7 +35,7 @@
          <% @products.each do |product| %>
          <div class="get_product_image text-center mb-4">
            <%=  link_to product_path(product.id) do %>
-           <div class="img"><%= image_tag product.get_product_image, size:'140x100'%></div>
+           <div class="img"><%= image_tag product.get_product_image, size:'150x100'%></div>
            <div class = "small"><%= product.name %></div>
            <% end %>
            ¥<%= product.add_tax_price.to_s(:delimited) %>

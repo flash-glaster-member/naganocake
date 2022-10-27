@@ -28,14 +28,14 @@
               <td><%= image_tag product.get_product_image, size:'50x50' %></td>
               <td><%= product.name %></td>
               <td><%= product.price %></td>
+              <td>
               <%= form_with model: f do |form| %>
                 <%= form.hidden_field :product_id, :value => product.id %>
                 <%= form.hidden_field :customer_id, :value => customer.id %>
-                <td>
                   <%= form.select :amount, *[1..1000], {selected: f.amount},class: "btn btn-sm btn-light"%>
                   <%= form.submit '変更',class: "btn btn-sm btn-success"%>
-                </td>
               <% end %>
+              </td>
               <td><%= f.subtotal %></td>
               <% total += f.subtotal%>
               <td>
