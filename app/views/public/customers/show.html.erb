@@ -1,41 +1,59 @@
 <div class="container">
   <div class="row">
-    <h4 bgcolor="#cococo" align="center">マイページ</h4>
+    <div class="col-1">
+    </div>
+       <h6 class="d-flex justify-content-left mb-5 bg-secondary p-2 text-black bg-opacity-10">マイページ</h6>
+  </div>
+
        <%= form_with model: @customer do |f| %>
        <div class="form-group" font-weight="bold">
         <%= f.label "登録情報" %>
-        <%= f.submit "編集する" , class: 'btn btn-success' %>
+        <%= f.label "　" %>
+        <%= link_to "編集する", edit_customer_path, class: "col-1 btn btn-sm btn-success" %>
        </div>
-        <table border="1">
-          <tr>
-            <td bgcolor="#cococo" width="20%">氏名</td>
-            <td width="60%"><%= @customer.lastname %><%= @customer.firstname %></td>
-          </tr>
-          <tr>
-            <td bgcolor="#cococo">カナ</td>
-            <td><%= @customer.kana_last_name %><%= @customer.kana_first_name %></td>
-          </tr>
-          <tr>
-            <td bgcolor="#cococo">郵便番号</td>
-            <td><%= @customer.postcode %></td>
-          </tr>
-          <tr>
-            <td bgcolor="#cococo">住所</td>
-            <td><%= @customer.address %></td>
-          </tr>
-          <tr>
-            <td bgcolor="#cococo">メールアドレス</td>
-            <td><%= @customer.email %></td>
-          </tr>
-        </table>
-       <div class="form-group">
-        <%= f.label "配送先" %>
-        <%= f.submit "一覧を見る" , class: 'btn btn-success' %>
-       </div>
-       <div class="form-group">
-        <%= f.label "注文履歴" %>
-        <%= f.submit "一覧を見る" , class: 'btn btn-success' %>
-       </div>
-       <% end %>
-  </div>
+
+          <table border="1">
+            <tr>
+              <td bgcolor="#cococo" width="20%">氏名</td>
+              <td width="60%"><%= @customer.lastname %><%= @customer.firstname %></td>
+            </tr>
+            <tr>
+              <td bgcolor="#cococo">カナ</td>
+              <td><%= @customer.kana_last_name %><%= @customer.kana_first_name %></td>
+            </tr>
+            <tr>
+              <td bgcolor="#cococo">郵便番号</td>
+              <td><%= @customer.postcode %></td>
+            </tr>
+            <tr>
+              <td bgcolor="#cococo">住所</td>
+              <td><%= @customer.address %></td>
+            </tr>
+            <tr>
+              <td bgcolor="#cococo">電話番号</td>
+              <td><%= @customer.phone_number %></td>
+            </tr>
+            <tr>
+              <td bgcolor="#cococo">メールアドレス</td>
+              <td><%= @customer.email %></td>
+            </tr>
+          </table>
+
+　　　　　<div class="field row mb-2">
+           <div class="form-group">
+            <%= f.label "配送先" %>
+            <%= f.label "　" %>
+            <%= link_to "一覧を見る", addresses_path, class: "col-9 btn btn-sm btn-success" %>
+           </div>
+          </div>
+          <div class="field row mb-2">
+           <div class="form-group">
+            <%= f.label "注文履歴" %>
+            <%= f.label "　" %>
+            <%= link_to "一覧を見る", orders_path, class: "col-9 btn btn-sm btn-success" %>
+           </div>
+           <% end %>
+          </div>
 </div>
+
+

@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
    root :to =>"homes#top"
    get 'homes/about', as: "about"
 
@@ -17,16 +16,16 @@ Rails.application.routes.draw do
  }
 
  scope module: :public do
-    # 退会確認画面
-    get "/customers/quite" => 'customers#quite', as: 'quite'
-    # 論理削除用のルーティング
-    patch "/customers/out" => 'customers#out', as: 'out'
-
     get 'orders/thanks' => "orders#thanx"
     post 'orders/log'
+    # 退会確認画面
+    get "/customers/quite" => 'customers#quite', as: 'quite'
+     # 論理削除用のルーティング
+    patch "/customers/out" => 'customers#out', as: 'out'
+
 
     resources :products, only: [:index, :show]
-    resources :customers, only: [:show, :edit, :update, :create]
+    resources :customers, only: [:show, :edit, :update]
     resources :cart_products, only: [:index, :update, :destroy, :all_destroy, :create]
     resources :orders, only: [:new, :log, :thanx, :create, :index, :show]
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
