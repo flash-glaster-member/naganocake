@@ -24,7 +24,8 @@ class Public::CartProductsController < ApplicationController
 
   def all_destroy
     @cart_products = CartProduct.where(customer_id: current_customer)
-    @cart_products.destroy
+    @cart_products.destroy_all
+    redirect_to cart_products_path
   end
 
   def create
